@@ -61,7 +61,8 @@
 
 ## Задание №10
 ### Отслеживание изменений в коммитах.
-![image](https://github.com/user-attachments/assets/49967c64-78ee-47e3-a4a9-aed02c2dbd22)
+![image](https://github.com/user-attachments/assets/59846235-ca2d-42bf-a7cb-75219fe46a22)
+
 
 ## Задание №11
 ![image](https://github.com/user-attachments/assets/101a11e6-db55-4214-b4e3-29d0bdb60433)
