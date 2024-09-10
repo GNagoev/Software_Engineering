@@ -68,7 +68,9 @@
 ## Задание №14
 ### Разрешение конфликтов при слиянии.
 ## Задание №15
-### Настройка .gitignore.
+### Настройка .gitignore. 
+![image](https://github.com/user-attachments/assets/fd77dc36-37a2-4cd7-ba64-77421b18dfa9)
+
 
 ```python
 print(123)
