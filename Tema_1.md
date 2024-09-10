@@ -35,7 +35,8 @@
 ### Создание нового репозитория. ![image](https://github.com/user-attachments/assets/692bbad7-c8b6-4900-aae4-dac9d2df5c04)
 
 ## Задание №4
-### Подготовка файлов. 
+### Подготовка файлов. ![image](https://github.com/user-attachments/assets/c82f69d6-5e03-476f-bc7c-a3c3397f88af)
+
 ## Задание №5
 ### Фиксация изменений. ![image](https://github.com/user-attachments/assets/b6f07d28-b3a6-4540-86d8-8772414617a2)
 
