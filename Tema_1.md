@@ -55,9 +55,12 @@
 
 ## Задание №8
 ### Особенности применения «Фетч».
+![image](https://github.com/user-attachments/assets/c1103b5a-f27d-4d94-823f-b1de1f8d790d)
+
 ## Задание №9
 ### Удаление файлов, веток, локальных и удалённых репозиториев.
-![image](https://github.com/user-attachments/assets/42fd4358-cd02-47bf-b439-db824a8c604a)
+![image](https://github.com/user-attachments/assets/c5030615-58f3-416e-9a53-c2a875bb182d)
+
 
 ## Задание №10
 ### Отслеживание изменений в коммитах.
