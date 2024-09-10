@@ -24,7 +24,8 @@
 
 
 ## Задание №1
-### Установка. ![image](https://github.com/user-attachments/assets/d3ab1858-bf19-4ad8-a60e-a118a5c1e107)
+### Установка. ![image](https://github.com/user-attachments/assets/e3ed55ed-8c68-4966-8807-b0e2c2aa7b6f)
+
 
 
 ## Задание №2
