@@ -24,27 +24,35 @@
 
 
 ## Задание №1
-### Установка. ![image](https://github.com/user-attachments/assets/e3ed55ed-8c68-4966-8807-b0e2c2aa7b6f)
+### Установка. 
+![image](https://github.com/user-attachments/assets/e3ed55ed-8c68-4966-8807-b0e2c2aa7b6f)
 
 
 
 ## Задание №2
-### Настройка. ![image](https://github.com/user-attachments/assets/da787ea0-f8c2-4472-90e9-519995833675)
+### Настройка. 
+![image](https://github.com/user-attachments/assets/da787ea0-f8c2-4472-90e9-519995833675)
 
 ## Задание №3
-### Создание нового репозитория. ![image](https://github.com/user-attachments/assets/692bbad7-c8b6-4900-aae4-dac9d2df5c04)
+### Создание нового репозитория. 
+![image](https://github.com/user-attachments/assets/692bbad7-c8b6-4900-aae4-dac9d2df5c04)
 
 ## Задание №4
-### Подготовка файлов. ![image](https://github.com/user-attachments/assets/c82f69d6-5e03-476f-bc7c-a3c3397f88af)
+### Подготовка файлов. 
+![image](https://github.com/user-attachments/assets/c82f69d6-5e03-476f-bc7c-a3c3397f88af)
 
 ## Задание №5
-### Фиксация изменений. ![image](https://github.com/user-attachments/assets/b6f07d28-b3a6-4540-86d8-8772414617a2)
+### Фиксация изменений. 
+![image](https://github.com/user-attachments/assets/b6f07d28-b3a6-4540-86d8-8772414617a2)
 
 ## Задание №6
-### Подключение к удаленному репозиторию. ![image](https://github.com/user-attachments/assets/864882af-ca10-4c30-bde6-f40fb3a712b4)
+### Подключение к удаленному репозиторию. 
+![image](https://github.com/user-attachments/assets/864882af-ca10-4c30-bde6-f40fb3a712b4)
 
 ## Задание №7
 ### Ветвление.
+ ![image](https://github.com/user-attachments/assets/22dc9296-0f67-47f5-9894-fad8513e86b1)
+
 ## Задание №8
 ### Особенности применения «Фетч».
 ## Задание №9
