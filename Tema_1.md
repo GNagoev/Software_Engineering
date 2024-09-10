@@ -30,7 +30,7 @@
 
 
 ## Задание №2
-### Настройка. 
+### Настройка.  
 ![image](https://github.com/user-attachments/assets/da787ea0-f8c2-4472-90e9-519995833675)
 
 ## Задание №3
