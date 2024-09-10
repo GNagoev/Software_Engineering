@@ -24,7 +24,8 @@
 
 
 ## Задание №1
-### Установка. ![Uploading image.png…]()
+### Установка. ![image](https://github.com/user-attachments/assets/d3ab1858-bf19-4ad8-a60e-a118a5c1e107)
+
 
 ## Задание №2
 ### Настройка.
