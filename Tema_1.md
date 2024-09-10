@@ -32,7 +32,8 @@
 ### Настройка. ![image](https://github.com/user-attachments/assets/da787ea0-f8c2-4472-90e9-519995833675)
 
 ## Задание №3
-### Создание нового репозитория.
+### Создание нового репозитория. ![image](https://github.com/user-attachments/assets/692bbad7-c8b6-4900-aae4-dac9d2df5c04)
+
 ## Задание №4
 ### Подготовка файлов.
 ## Задание №5
