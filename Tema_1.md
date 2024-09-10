@@ -63,6 +63,8 @@
 ###  Возвращение файла к предыдущему (определенному) состоянию.
 ## Задание №12
 ### Возвращение к предыдущему коммиту.
+![image](https://github.com/user-attachments/assets/66eb6fee-36a2-435a-8315-8ef078af6255)
+
 ## Задание №13
 ### Исправление коммита.
 ![image](https://github.com/user-attachments/assets/651d4f2b-ae78-4ee1-9659-6096ebd6bc7a)
