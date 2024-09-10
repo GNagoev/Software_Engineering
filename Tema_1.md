@@ -51,7 +51,8 @@
 
 ## Задание №7
 ### Ветвление.
- ![image](https://github.com/user-attachments/assets/22dc9296-0f67-47f5-9894-fad8513e86b1)
+ ![image](https://github.com/user-attachments/assets/d0ba60e5-d10f-4301-a182-1d2c85efa488)
+
 
 ## Задание №8
 ### Особенности применения «Фетч».
