@@ -1,1 +1,2 @@
-s = "hello" * 4; print(s * 4)
+s = "hello"
+print(s * 4)
