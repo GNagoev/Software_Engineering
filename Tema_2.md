@@ -70,7 +70,8 @@
 
 ## Лабораторная работа №8
 ### Посчитайте сколько раз символ ‘o’ встречается в строке ‘Hello World’.
-![image](https://github.com/user-attachments/assets/c1103b5a-f27d-4d94-823f-b1de1f8d790d)
+![image](https://github.com/user-attachments/assets/3515dcaf-743d-48d0-9c9e-5b2da0b478bf)
+
 
 ## Лабораторная работа №9
 ### Напишите предложение ‘Hello World’ в две строки. Написанная программа должна занимать
