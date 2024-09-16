@@ -82,7 +82,8 @@
 
 ## Самостоятельная работа №2
 ### Присвоить значения трем переменным и вывести их в консоль, используя только две строки редактора кода.
-![image](https://github.com/user-attachments/assets/66eb6fee-36a2-435a-8315-8ef078af6255)
+![image](https://github.com/user-attachments/assets/c695fe3f-bacc-404e-8b9b-86b32f60545c)
+
 
 
 
