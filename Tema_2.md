@@ -83,7 +83,7 @@
 ## Лабораторная работа №10
 ### Из предложения ‘Hello World’ выведите в консоль только 2 символ, а затем выведите слово
 ### ‘Hello’.
-![image](https://github.com/user-attachments/assets/59846235-ca2d-42bf-a7cb-75219fe46a22)
+![image](https://github.com/user-attachments/assets/e18868db-024a-4afb-abac-00204f33530d)
 
 
 ## Задание №11
