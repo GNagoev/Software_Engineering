@@ -76,7 +76,8 @@
 ## Лабораторная работа №9
 ### Напишите предложение ‘Hello World’ в две строки. Написанная программа должна занимать
 ### одну строку в редакторе кода.
-![image](https://github.com/user-attachments/assets/c5030615-58f3-416e-9a53-c2a875bb182d)
+![image](https://github.com/user-attachments/assets/67b7bcc5-a858-462c-a6fe-4132b56620b6)
+
 
 
 ## Лабораторная работа №10
