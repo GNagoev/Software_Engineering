@@ -1,16 +1,15 @@
-import random
+results = [
+    10.2, 14.8, 19.3, 22.7, 12.5, 33.1, 38.9, 21.6, 26.4, 17.1,
+    30.2, 35.7, 16.9, 27.8, 24.5, 16.3, 18.7, 31.9, 12.9, 37.4
+]
 
-def main():
-  roll = random.randint(1, 6)
-  print(f"Результат: {roll}")
+best_results = sorted(results)[:3]
 
-  if roll in (5, 6):
-    print("Вы победили")
-  elif roll in (3, 4):
-    print("Анлаки...")
-    main()
-  else:
-    print("Вы проиграли")
+worst_results = sorted(results)[-3:]
 
-if __name__ == "__main__":
-  main()
+results_above_10 = [result for result in results if result >= 10]
+
+print(f"Три лучшие результата: {best_results}")
+print(f"Три худшие результата: {worst_results}")
+print(f"Все результаты начиная с 10: {results_above_10}")
+

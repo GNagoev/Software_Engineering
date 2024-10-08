@@ -1,6 +1,9 @@
-def main(one, two):
-  return one + two
+def replace(input_list):
+    memory = input_list[0]
+    input_list[0] = input_list[-1]
+    input_list[-1] = memory
 
-for i in range(5):
-    answer = main(one = 1, two = 10)
-    print(answer)
+    return input_list
+
+
+print(replace([1, 2, 3, 4, 5]))
