@@ -1,15 +1,23 @@
-def update_grades(grades):
-    updated_grades = [4 if grade == 3 else grade for grade in grades if grade != 2]
-    return updated_grades
+def get_employee_timeframe(logs, employee_id):
 
-grades_list_1 = [2, 3, 4, 5, 3, 4, 5, 2, 2, 5, 3, 4, 3, 5, 4]
-grades_list_2 = [4, 2, 3, 5, 3, 5, 4, 2, 2, 5, 4, 3, 5, 3, 4]
-grades_list_3 = [5, 4, 3, 3, 4, 3, 3, 5, 5, 3, 3, 3, 3, 4, 4]
+    first_index = -1
+    second_index = -1
 
-updated_list_1 = update_grades(grades_list_1)
-updated_list_2 = update_grades(grades_list_2)
-updated_list_3 = update_grades(grades_list_3)
+    for index, value in enumerate(logs):
+        if value == employee_id:
+            if first_index == -1:
+                first_index = index
+            elif second_index == -1:
+                second_index = index
+                break
 
-print("Обновленный список 1:", updated_list_1)
-print("Обновленный список 2:", updated_list_2)
-print("Обновленный список 3:", updated_list_3)
+    if first_index == -1:
+        return ()
+    if second_index == -1:
+        return logs[first_index:]
+    return logs[first_index:second_index + 1]
+
+
+print(get_employee_timeframe((1, 2, 3), 8))
+print(get_employee_timeframe((1, 8, 3, 4, 8, 8, 9, 2), 8))
+print(get_employee_timeframe((1, 2, 8, 5, 1, 2, 9), 8))

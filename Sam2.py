@@ -1,15 +1,14 @@
-results = [
-    10.2, 14.8, 19.3, 22.7, 12.5, 33.1, 38.9, 21.6, 26.4, 17.1,
-    30.2, 35.7, 16.9, 27.8, 24.5, 16.3, 18.7, 31.9, 12.9, 37.4
-]
+def remove_first_occurrence(tpl, value):
+    lst = list(tpl)
 
-best_results = sorted(results)[:3]
+    try:
+        lst.remove(value)
+    except ValueError:
+        pass
 
-worst_results = sorted(results)[-3:]
+    return tuple(lst)
 
-results_above_10 = [result for result in results if result >= 10]
 
-print(f"Три лучшие результата: {best_results}")
-print(f"Три худшие результата: {worst_results}")
-print(f"Все результаты начиная с 10: {results_above_10}")
-
+print(remove_first_occurrence((1, 2, 3), 1))
+print(remove_first_occurrence((1, 2, 3, 1, 2, 3, 4, 5, 2, 3, 4, 2, 4, 2), 3))
+print(remove_first_occurrence((2, 4, 6, 6, 4, 2), 9))

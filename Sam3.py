@@ -1,19 +1,16 @@
-import math
+from collections import Counter
 
-one = [12, 25, 3, 48, 71]
-two = [5, 18, 40, 62, 98]
-three = [4, 21, 37, 56, 84]
+def top_three_digits(digit_string):
+    count = Counter(digit_string)
 
-max_sides = [max(one), max(two), max(three)]
-min_sides = [min(one), min(two), min(three)]
+    most_common = count.most_common(3)
 
-def heron_area(sides):
-    s = sum(sides) / 2
-    area = math.sqrt(s * (s - sides[0]) * (s - sides[1]) * (s - sides[2]))
-    return area
+    result = {int(key): value for key, value in most_common}
 
-max_triangle_area = heron_area(max_sides)
-min_triangle_area = heron_area(min_sides)
+    return dict(sorted(result.items()))
 
-print(f"Площадь треугольника с максимальными сторонами: {max_triangle_area:.2f}")
-print(f"Площадь треугольника с минимальными сторонами: {min_triangle_area:.2f}")
+
+digit_string = "123456789012345678901234567890"
+result = top_three_digits(digit_string)
+print(result)
+
