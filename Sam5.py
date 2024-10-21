@@ -1,19 +1,7 @@
-def unique_sorted_items(purchases):
-    item_count = {}
+def read_and_convert(directory):
+    with open(directory, 'r', encoding='utf-8') as file:
+        content = file.read()
+    modified_content = content.lower()
+    print(modified_content)
 
-    for item in purchases:
-        if item in item_count:
-            item_count[item] += 1
-        else:
-            item_count[item] = 1
-
-    sorted_items = sorted(item_count.keys())
-
-    result = tuple((item, item_count[item]) for item in sorted_items)
-
-    return result
-
-
-print(unique_sorted_items(['apple', 'banana', 'apple', 'orange', 'banana', 'kiwi']))
-print(unique_sorted_items(['carrot', 'beet', 'carrot', 'potato', 'beet', 'carrot']))
-print(unique_sorted_items(['dog', 'cat', 'dog', 'mouse', 'cat', 'cat']))
+read_and_convert(r'C:\Users\Глеб\PycharmProjects\lab_1\input.txt')
