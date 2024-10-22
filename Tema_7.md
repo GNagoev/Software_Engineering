@@ -19,306 +19,348 @@
 
 
 ## Лабораторная работа №1
-### Составьте текстовый файл и положите его в одну директорию с
-программой на Python. Текстовый файл должен состоять минимум из
-двух строк
-```python
-request = int(input('Введите номер кабинета: '))
+### Составьте текстовый файл и положите его в одну директорию с программой на Python. Текстовый файл должен состоять минимум из двух строк.
 
-dictionary = {
-    101: {'key': 1234 , 'access': True},
-    102: {'key': 1337 , 'access': True},
-    103: {'key': 8943 , 'access': True},
-    104: {'key': 5555 , 'access': True},
-    None: {'key': None , 'access': False},
-
-}
-
-response = dictionary.get(request)
-if not response:
-    response = dictionary(None)
-key = response.get('key')
-access = response.get('access')
-print(key, access)
-```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/8d01a6a1-61d0-40b0-852f-0fcdb06bdea7)
+![image](https://github.com/user-attachments/assets/829758be-520e-4f79-8989-8a19f9494396)
+
 
 
 
 
 
 ## Лабораторная работа №2
-### Алексей решил создать самый большой словарь в мире. Для этого он придумал функцию dict_maker (**kwargs), которая принимает неограниченное количество параметров «ключ: значение» и обновляет созданный им словарь my_dict, состоящий всего из одного элемента «first» со значением «so easy». Помогите Алексею создать данную функцию. Ниже на скриншоте мы использовали встроенный модуль pprint, который выводит большие объемы информации более понятно для восприятия человеческим глазом. Иногда очень удобно использовать данную возможность Python.
+### Напишите программу, которая выведет только первую строку из вашего файла, при этом используйте конструкцию open()/close().
 
 ```python
-from pprint import pprint
-
-my_dict = {'first': 'so easy'}
-
-
-def dict_maker(**kwargs):
-    my_dict.update(**kwargs)
-
-
-dict_maker(a1 = 1, a2 = 20, a3 = 54, a4 = 13)
-dict_maker(name = 'Михаил', age = 31, weight = 70, eyes_color = 'blue')
-pprint(my_dict)
+f = open('input.txt', 'r')
+print(f.readline())
+f.close()
 ```
 
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/e3a37c53-cfc1-4e90-abaf-a9e0fc236081)
+![image](https://github.com/user-attachments/assets/359e3356-da6b-456c-a642-c4bcbae98b56)
+
 
 
 
 
 
 ## Лабораторная работа №3
-### Для решения некоторых задач бывает необходимо разложить строку на отдельные символы. Мы знаем что это можно сделать при помощи split(), у которого более гибкая настройка для разделения для этого, но если нам нужно посимвольно разделить строку без всяких условий, то для этого мы можем использовать кортежи (tuple). Для этого напишем любую строку, которую будем делить и “обвернем” ее в tuple и дальше мы можем как нам угодно с ней работать, например, сделать ее списком (тогда получится полный аналог split()) или же работать с ним дальше, как с кортежем.
+### Напишите программу, которая выведет все строки из вашего файла в массиве, при этом используйте конструкцию open()/close().
+
 
 ```python
-input_string = 'HelloWorld'
-result = tuple(input_string)
-print(result)
-print(list(result))
+f = open('input.txt', 'r')
+print(f.readlines())
+f.close()
 ```
 
 
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/ab7cdf9d-da80-47b0-bbf6-b4394870ccb6)
+![image](https://github.com/user-attachments/assets/2a8f2e97-d78d-4d59-9181-fe669a1cdb4a)
+
 
 
 
 
 
 ## Лабораторная работа №4
-### Вовочка решил написать крутую функцию, которая будет писать имя, возраст и место работы, но при этом на вход этой функции будет поступать кортеж. Помогите Вовочке написать эту программу.
+### Напишите программу, которая выведет все строки из вашего файла в массиве, при этом используйте конструкцию with open().
 
 ```python
-def personal_info(name, age, company = 'unnamed'):
-    print(f"Имя: {name} Возраст: {age} Компания: {company}")
-
-
-tom = ("Григорий", 22)
-personal_info(*tom)
-
-bob = ("Георгий", 41, "Yandex")
-personal_info(*bob)
+with open('input.txt') as f:
+    print(f.readlines())
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/ee5d4821-e477-408e-ba92-8c35f04e05a1)
+![image](https://github.com/user-attachments/assets/ff985bac-198d-497c-b3db-5994d72e7e25)
+
 
 
 
 
 
 ## Лабораторная работа №5
-### Для сопровождения первых лиц государства X нужен кортеж, но никто не может определиться с порядком машин, поэтому вам нужно написать функцию, которая будет сортировать кортеж, состоящий из целых чисел по возрастанию, и возвращает его. Если хотя бы один элемент не является целым числом, то функция возвращает исходный кортеж.
+### Напишите программу, которая выведет каждую строку из вашего файла отдельно, при этом используйте конструкцию with open().
 
 ```python
-def tuple_sort(tpl):
-    for elm in tpl:
-        if not isinstance(elm, int):
-            return tpl
-    return tuple(sorted(tpl))
-
-if __name__ == '__main__':
-    print(tuple_sort((5, 5, 3, 1, 9)))
-    print(tuple_sort((5, 5, 2.1, '1', 9)))
+with open('input.txt') as f:
+    for line in f:
+        print(line)
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/693e8ed3-e92a-4df8-b3f8-68688d978ab3)
+![image](https://github.com/user-attachments/assets/a84665cf-3c74-4ef7-9c2b-624a537966a4)
 
 
 
+## Лабораторная работа №6
+### Напишите программу, которая будет добавлять новую строку в ваш файл, а потом выведет полученный файл в консоль. Вывод можно осуществлять любым способом. Обязательно проверьте сам файл, чтобы изменения в нем тоже отображались.
+
+```python
+with open('input.txt', 'a+') as f:
+    f.write('\nIm additional line')
+
+with open('input.txt', 'r') as f:
+    result = f.readlines()
+    print(result)
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/b110b701-1f5d-4cb1-9f2f-48f2bc75b42e)
+
+
+![image](https://github.com/user-attachments/assets/1f771657-a090-4b4a-b8ae-03738e7998bc)
+
+
+
+## Лабораторная работа №7
+### Напишите программу, которая перепишет всю информацию, которая была у вас в файле до этого, например напишет любые данные из произвольно вами составленного списка. Также не забудьте проверить что измененная вами информация сохранилась в файле.
+
+```python
+lines = ['one', 'two', 'three']
+with open ('input.txt', 'w') as f:
+    for line in lines:
+        f.write('\nCycle run ' + line)
+    print('Done!')
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/bf734a55-bb41-451d-9859-afdf192ecc1d)
+
+![image](https://github.com/user-attachments/assets/25a77885-db64-485f-a8b9-98c251780dcc)
+
+
+
+## Лабораторная работа №8
+### Выберите любую папку на своем компьютере, имеющую вложенные директории. Выведите на печать в терминал ее содержимое, как и всех подкаталогов при помощи функции print_docs(directory).
+
+```python
+import os
+
+
+def print_docs(directory):
+    all_files = os.walk(directory)
+    for catalog in all_files:
+        print(f'Папка{catalog[0]} содержит:')
+    print(f'Директории: {", ".join([folder for folder in catalog[1]])}')
+    print(f'Файлы: {", ".join([file for file in catalog[2]])}')
+    print('-' * 40)
+
+
+print_docs(r'C:\Users\Глеб\Software_Engineering\pic')
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/d43c54d7-d94c-4b49-86f4-8428ca658a06)
+
+
+## Лабораторная работа №9
+### Документ «input.txt» содержит следующий текст:
+Приветствие
+Спасибо
+Извините
+Пожалуйста
+До свидания
+Ты готов?
+Как дела?
+С днем рождения!
+Удача!
+Я тебя люблю.
+### Требуется реализовать функцию, которая выводит слово, имеющее максимальную длину (или список слов, если таковых несколько).
+
+
+```python
+def longest_words(file):
+    with open (file, encoding='utf-8') as f:
+        words = f.read().split()
+        max_length = len(max(words, key=len))
+        for word in words:
+            if len(word) == max_length:
+                sought_words = word
+
+        if len(sought_words) == 1:
+            return sought_words[0]
+        return sought_words
+
+
+print(longest_words('input.txt'))
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/8bf5c901-e22b-4d57-b425-9e18cd3728e9)
+
+![image](https://github.com/user-attachments/assets/fb97c2da-8878-4790-98e1-4e28acbb4dad)
+
+![image](https://github.com/user-attachments/assets/3cc4c9ea-bc15-40ac-ba83-0854b5e0d83d)
+
+
+## Лабораторная работа №10
+### Требуется создать csv-файл «rows_300.csv» со следующими
+столбцами:
+• № - номер по порядку (от 1 до 300);
+• Секунда – текущая секунда на вашем ПК;
+• Микросекунда – текущая миллисекунда на часах.
+### Для наглядности на каждой итерации цикла искусственно приостанавливайте скрипт на 0,01 секунды.
+
+```python
+import csv
+import datetime
+import time
+
+with open('rows_300.csv', 'w', encoding='utf-8', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['№', 'Секунда ', 'Микросекунда'])
+    for line in range(1, 301):
+        writer.writerow([line, datetime.datetime.now().second,
+                         datetime.datetime.now().microsecond])
+        time.sleep(0.01)
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/2cccc32a-6270-4f8e-8ad3-e51c4ed20e12)
+
+![image](https://github.com/user-attachments/assets/5db713ad-ff60-4c59-a450-5651f059cf47)
 
 
 
 ## Самостоятельная работа №1
-### При создании сайта у вас возникла потребность обрабатывать данные пользователя в странной форме, а потом переводить их в нужные вам форматы. Вы хотите принимать от пользователя последовательность чисел, разделенных пробелом, а после переформатировать эти данные в список и кортеж. Реализуйте вашу задумку. Для получения начальных данных используйте input(). Результатом программы будет выведенный список и кортеж из начальных данных.
+### Найдите в интернете любую статью (объем статьи не менее 200 слов), скопируйте ее содержимое в файл и напишите программу, которая считает количество слов в текстовом файле и определит самое часто встречающееся слово. Результатом выполнения задачи будет: скриншот файла со статьей, листинг кода, и вывод в консоль, в котором будет указана вся необходимая информация.
 
 ```python
-user_input = input("Введите последовательность чисел, разделенных пробелом: ")
-
-number_strings = user_input.split()
-numbers = [int(num) for num in number_strings]
-
-numbers_tuple = tuple(numbers)
-
-print("Список:", numbers)
-print("Кортеж:", numbers_tuple)
-```
-
-### Результат.
-
-![image](https://github.com/user-attachments/assets/4632c265-2a02-453d-916c-e06e8ddf55f7)
+from collections import Counter
+import re
 
 
-
-
-
-
-## Самостоятельная работа №2
-### Николай знает, что кортежи являются неизменяемыми, но он очень упрямый и всегда хочет доказать, что он прав. Студент решил создать функцию, которая будет удалять первое появление определенного элемента из кортежа по значению и возвращать кортеж без него. Попробуйте повторить шедевр не признающего авторитеты начинающего программиста. Но учтите, что Николай не всегда уверен в наличии элемента в кортеже (в этом случае кортеж вернется функцией в исходном виде).
-Входные данные:
-(1, 2, 3), 1)
-(1, 2, 3, 1, 2, 3, 4, 5, 2, 3, 4, 2, 4, 2), 3)
-(2, 4, 6, 6, 4, 2), 9)
-Ожидаемый результат:
-(2, 3)
-(1, 2, 1, 2, 3, 4, 5, 2, 3, 4, 2, 4, 2)
-(2, 4, 6, 6, 4, 2)
-```python
-def remove_first_occurrence(tpl, value):
-    lst = list(tpl)
-
+def analyze_text_file(directory):
     try:
-        lst.remove(value)
-    except ValueError:
-        pass
+        with open(directory, 'r', encoding='utf-8') as file:
+            text = file.read()
+        words = re.findall(r'\b\w+\b', text.lower())
+        word_count = len(words)
+        word_frequency = Counter(words)
+        most_common_word, most_common_count = word_frequency.most_common(1)[0]
+        print(f"Количество слов в файле: {word_count}")
+        print(f"Самое часто встречающееся слово: '{most_common_word}' (встречается {most_common_count} раз)")
 
-    return tuple(lst)
-
-
-print(remove_first_occurrence((1, 2, 3), 1))
-print(remove_first_occurrence((1, 2, 3, 1, 2, 3, 4, 5, 2, 3, 4, 2, 4, 2), 3))
-print(remove_first_occurrence((2, 4, 6, 6, 4, 2), 9))
+analyze_text_file(r'C:\Users\Глеб\PycharmProjects\lab_1\input.txt')
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/3e3dd1f1-8b81-4f89-ba7d-2a8305abb3ec)
+![image](https://github.com/user-attachments/assets/4f4fd71d-ba7d-4d7d-be78-397b571e71fa)
 
-
-
+![image](https://github.com/user-attachments/assets/ec299c3a-8169-40b2-a196-3f62677371b6)
 
 
 
 ## Самостоятельная работа №3
-### Ребята поспорили кто из них одним нажатием на numpad наберет больше повторяющихся цифр, но не понимают, как узнать победителя. Вам им нужно в этом помочь. Дана строка в виде случайной последовательности чисел от 0 до 9 (длина строки минимум 15 символов). Требуется создать словарь, который в качестве ключей будет принимать данные числа (т. е. ключи будут типом int), а в качестве значений – количество этих чисел в имеющейся последовательности. Для построения словаря создайте функцию, принимающую строку из цифр. Функция должна возвратить словарь из 3-х самых часто встречаемых чисел, также эти значения нужно вывести в порядке возрастания ключа.
+### Имеется файл input.txt с текстом на латинице. Напишите программу, которая выводит следующую статистику по тексту: количество букв латинского алфавита; число слов; число строк.
+Текст в файле:
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
 
+Ожидаемый результат:
+Input file contains:
+108 letters
+20 words
+4 lines
 ```python
-from collections import Counter
+def analyze_text(directory):
+    with open(directory, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+    total_letters = 0
+    total_words = 0
+    total_lines = len(lines)
+    for line in lines:
+        total_letters += sum(c.isalpha() and c.isascii() for c in line)
+        total_words += len(line.split())
+    print(f"Количество букв латинского алфавита: {total_letters}")
+    print(f"Количество слов: {total_words}")
+    print(f"Количество строк: {total_lines}")
 
-def top_three_digits(digit_string):
-    count = Counter(digit_string)
-
-    most_common = count.most_common(3)
-
-    result = {int(key): value for key, value in most_common}
-
-    return dict(sorted(result.items()))
-
-
-digit_string = "123456789012345678901234567890"
-result = top_three_digits(digit_string)
-print(result)
+analyze_text(r'C:\Users\Глеб\PycharmProjects\lab_1\input.txt')
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/494e6f4a-ae97-4025-8d6d-864af406e96d)
+![image](https://github.com/user-attachments/assets/f32e60dc-e180-4700-ba75-97edfe6dc710)
 
-
-
-
+![image](https://github.com/user-attachments/assets/77a36dea-894b-4faf-9d6c-e0678c547516)
 
 
 ## Самостоятельная работа №4
-### Ваш хороший друг владеет офисом со входом по электронным картам, ему нужно чтобы вы написали программу, которая показывала в каком порядке сотрудники входили и выходили из офиса. Определение сотрудника происходит по id. Напишите функцию, которая на вход принимает кортеж и случайный элемент (id), его можно придумать самостоятельно. Требуется вернуть новый кортеж, начинающийся с первого появления элемента в нем и заканчивающийся вторым его появлением включительно. Если элемента нет вовсе – вернуть пустой кортеж. Если элемент встречается только один раз, то вернуть кортеж, который начинается с него и идет до конца исходного.
-Входные данные:
-(1, 2, 3), 8)
-(1, 8, 3, 4, 8, 8, 9, 2), 8)
-(1, 2, 8, 5, 1, 2, 9), 8)
-Ожидаемый результат:
-()
-(8, 3, 4, 8)
-(8, 5, 1, 2, 9)
+### Напишите программу, которая получает на вход предложение, выводит его в терминал, заменяя все запрещенные слова звездочками * (количество звездочек равно количеству букв в слове). Запрещенные слова, разделенные символом пробела, хранятся в текстовом файле input.txt. Все слова в этом файле записаны в нижнем регистре. Программа должна заменить запрещенные слова, где бы они ни встречались, даже в середине другого слова. Замена производится независимо от регистра: если файл input.txt содержит запрещенное слово exam, то слова exam, Exam, ExaM, EXAM и exAm должны быть заменены на ****.
+Запрещенные слова:
+hello email python the exam wor is
+• Предложение для проверки:
+Hello, world! Python IS the programming language of thE future. My
+EMAIL is....
+PYTHON is awesome!!!!
+• Ожидаемый результат:
+*****, ***ld! ****** ** *** programming language of *** future. My
+***** **....
+****** ** awesome!!!!
 
 ```python
-def get_employee_timeframe(logs, employee_id):
+import re
 
-    first_index = -1
-    second_index = -1
-
-    for index, value in enumerate(logs):
-        if value == employee_id:
-            if first_index == -1:
-                first_index = index
-            elif second_index == -1:
-                second_index = index
-                break
-
-    if first_index == -1:
-        return ()
-    if second_index == -1:
-        return logs[first_index:]
-    return logs[first_index:second_index + 1]
-
-
-print(get_employee_timeframe((1, 2, 3), 8))
-print(get_employee_timeframe((1, 8, 3, 4, 8, 8, 9, 2), 8))
-print(get_employee_timeframe((1, 2, 8, 5, 1, 2, 9), 8))
+def load_banned_words(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return [line.strip() for line in file.readlines()]
+def replace_banned_words(sentence, banned_words):
+    for word in banned_words:
+        pattern = re.compile(re.escape(word), re.IGNORECASE)
+        sentence = pattern.sub('*' * len(word), sentence)
+    return sentence
+def main():
+    banned_words = load_banned_words('input.txt')
+    sentence = "Hello, world! Python IS the programming language of thE future. My EMAIL is.... PYTHON is awesome!!!!"
+    result = replace_banned_words(sentence, banned_words)
+    print("Результат:", result)
+if __name__ == "__main__":
+    main()
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/97e09cd2-c6f2-4603-8e59-1f28ca768b0a)
+![image](https://github.com/user-attachments/assets/70310ae7-4e41-4c8c-a6e0-c9c8d2f3e66e)
 
-
-
+![image](https://github.com/user-attachments/assets/064db146-13c4-4733-af45-d5966c782cc1)
 
 
 
 ## Самостоятельная работа №5
-### Нужно посчитать уникальные элементы списка.
-### Тест 1:
-
-Входные данные: ['apple', 'banana', 'apple', 'orange', 'banana', 'kiwi']
-Ожидаемый результат: (('apple', 2), ('banana', 2), ('kiwi', 1), ('orange', 1))
-### Тест 2:
-
-Входные данные: ['carrot', 'beet', 'carrot', 'potato', 'beet', 'carrot']
-Ожидаемый результат: (('beet', 2), ('carrot', 3), ('potato', 1))
-### Тест 3:
-
-Входные данные: ['dog', 'cat', 'dog', 'mouse', 'cat', 'cat']
-Ожидаемый результат: (('cat', 3), ('dog', 2), ('mouse', 1))
+### Дан текстовый файл. Замени все заглавные буквы на строчные.
 ```python
-def unique_sorted_items(purchases):
-    item_count = {}
+def read_and_convert(directory):
+    with open(directory, 'r', encoding='utf-8') as file:
+        content = file.read()
+    modified_content = content.lower()
+    print(modified_content)
 
-    for item in purchases:
-        if item in item_count:
-            item_count[item] += 1
-        else:
-            item_count[item] = 1
-
-    sorted_items = sorted(item_count.keys())
-
-    result = tuple((item, item_count[item]) for item in sorted_items)
-
-    return result
-
-
-print(unique_sorted_items(['apple', 'banana', 'apple', 'orange', 'banana', 'kiwi']))
-print(unique_sorted_items(['carrot', 'beet', 'carrot', 'potato', 'beet', 'carrot']))
-print(unique_sorted_items(['dog', 'cat', 'dog', 'mouse', 'cat', 'cat']))
+read_and_convert(r'C:\Users\Глеб\PycharmProjects\lab_1\input.txt')
 ```
 
 ### Результат.
 
 
+![image](https://github.com/user-attachments/assets/d8599b3a-d124-47d2-94d9-95cf3be82a17)
 
-![image](https://github.com/user-attachments/assets/186ac609-b774-4f5e-aa29-b9c531c3b876)
+![image](https://github.com/user-attachments/assets/f1690a00-1d60-44a3-a43b-7994cebad40e)
 
