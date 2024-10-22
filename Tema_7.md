@@ -1,0 +1,324 @@
+# Тема 6. Базовые коллекции: словари, кортежи.
+Отчет по Теме #6 выполнил:
+- Нагоев Глеб Романович
+- ИВТ-22-2
+
+| Задание | Лаб_раб | Сам_раб |
+| ------ | ------ | ------ | 
+| Задание 1 | + | + |
+| Задание 2 | + | - |
+| Задание 3 | + | + |
+| Задание 4 | + | + |
+| Задание 5 | + | + |
+| Задание 6 | + | - |
+| Задание 7 | + | - |
+| Задание 8 | + | - |
+| Задание 9 | + | - |
+| Задание 10 | + | - |
+
+
+
+## Лабораторная работа №1
+### Составьте текстовый файл и положите его в одну директорию с
+программой на Python. Текстовый файл должен состоять минимум из
+двух строк
+```python
+request = int(input('Введите номер кабинета: '))
+
+dictionary = {
+    101: {'key': 1234 , 'access': True},
+    102: {'key': 1337 , 'access': True},
+    103: {'key': 8943 , 'access': True},
+    104: {'key': 5555 , 'access': True},
+    None: {'key': None , 'access': False},
+
+}
+
+response = dictionary.get(request)
+if not response:
+    response = dictionary(None)
+key = response.get('key')
+access = response.get('access')
+print(key, access)
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/8d01a6a1-61d0-40b0-852f-0fcdb06bdea7)
+
+
+
+
+
+## Лабораторная работа №2
+### Алексей решил создать самый большой словарь в мире. Для этого он придумал функцию dict_maker (**kwargs), которая принимает неограниченное количество параметров «ключ: значение» и обновляет созданный им словарь my_dict, состоящий всего из одного элемента «first» со значением «so easy». Помогите Алексею создать данную функцию. Ниже на скриншоте мы использовали встроенный модуль pprint, который выводит большие объемы информации более понятно для восприятия человеческим глазом. Иногда очень удобно использовать данную возможность Python.
+
+```python
+from pprint import pprint
+
+my_dict = {'first': 'so easy'}
+
+
+def dict_maker(**kwargs):
+    my_dict.update(**kwargs)
+
+
+dict_maker(a1 = 1, a2 = 20, a3 = 54, a4 = 13)
+dict_maker(name = 'Михаил', age = 31, weight = 70, eyes_color = 'blue')
+pprint(my_dict)
+```
+
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/e3a37c53-cfc1-4e90-abaf-a9e0fc236081)
+
+
+
+
+
+## Лабораторная работа №3
+### Для решения некоторых задач бывает необходимо разложить строку на отдельные символы. Мы знаем что это можно сделать при помощи split(), у которого более гибкая настройка для разделения для этого, но если нам нужно посимвольно разделить строку без всяких условий, то для этого мы можем использовать кортежи (tuple). Для этого напишем любую строку, которую будем делить и “обвернем” ее в tuple и дальше мы можем как нам угодно с ней работать, например, сделать ее списком (тогда получится полный аналог split()) или же работать с ним дальше, как с кортежем.
+
+```python
+input_string = 'HelloWorld'
+result = tuple(input_string)
+print(result)
+print(list(result))
+```
+
+
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/ab7cdf9d-da80-47b0-bbf6-b4394870ccb6)
+
+
+
+
+
+## Лабораторная работа №4
+### Вовочка решил написать крутую функцию, которая будет писать имя, возраст и место работы, но при этом на вход этой функции будет поступать кортеж. Помогите Вовочке написать эту программу.
+
+```python
+def personal_info(name, age, company = 'unnamed'):
+    print(f"Имя: {name} Возраст: {age} Компания: {company}")
+
+
+tom = ("Григорий", 22)
+personal_info(*tom)
+
+bob = ("Георгий", 41, "Yandex")
+personal_info(*bob)
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/ee5d4821-e477-408e-ba92-8c35f04e05a1)
+
+
+
+
+
+## Лабораторная работа №5
+### Для сопровождения первых лиц государства X нужен кортеж, но никто не может определиться с порядком машин, поэтому вам нужно написать функцию, которая будет сортировать кортеж, состоящий из целых чисел по возрастанию, и возвращает его. Если хотя бы один элемент не является целым числом, то функция возвращает исходный кортеж.
+
+```python
+def tuple_sort(tpl):
+    for elm in tpl:
+        if not isinstance(elm, int):
+            return tpl
+    return tuple(sorted(tpl))
+
+if __name__ == '__main__':
+    print(tuple_sort((5, 5, 3, 1, 9)))
+    print(tuple_sort((5, 5, 2.1, '1', 9)))
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/693e8ed3-e92a-4df8-b3f8-68688d978ab3)
+
+
+
+
+
+
+## Самостоятельная работа №1
+### При создании сайта у вас возникла потребность обрабатывать данные пользователя в странной форме, а потом переводить их в нужные вам форматы. Вы хотите принимать от пользователя последовательность чисел, разделенных пробелом, а после переформатировать эти данные в список и кортеж. Реализуйте вашу задумку. Для получения начальных данных используйте input(). Результатом программы будет выведенный список и кортеж из начальных данных.
+
+```python
+user_input = input("Введите последовательность чисел, разделенных пробелом: ")
+
+number_strings = user_input.split()
+numbers = [int(num) for num in number_strings]
+
+numbers_tuple = tuple(numbers)
+
+print("Список:", numbers)
+print("Кортеж:", numbers_tuple)
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/4632c265-2a02-453d-916c-e06e8ddf55f7)
+
+
+
+
+
+
+## Самостоятельная работа №2
+### Николай знает, что кортежи являются неизменяемыми, но он очень упрямый и всегда хочет доказать, что он прав. Студент решил создать функцию, которая будет удалять первое появление определенного элемента из кортежа по значению и возвращать кортеж без него. Попробуйте повторить шедевр не признающего авторитеты начинающего программиста. Но учтите, что Николай не всегда уверен в наличии элемента в кортеже (в этом случае кортеж вернется функцией в исходном виде).
+Входные данные:
+(1, 2, 3), 1)
+(1, 2, 3, 1, 2, 3, 4, 5, 2, 3, 4, 2, 4, 2), 3)
+(2, 4, 6, 6, 4, 2), 9)
+Ожидаемый результат:
+(2, 3)
+(1, 2, 1, 2, 3, 4, 5, 2, 3, 4, 2, 4, 2)
+(2, 4, 6, 6, 4, 2)
+```python
+def remove_first_occurrence(tpl, value):
+    lst = list(tpl)
+
+    try:
+        lst.remove(value)
+    except ValueError:
+        pass
+
+    return tuple(lst)
+
+
+print(remove_first_occurrence((1, 2, 3), 1))
+print(remove_first_occurrence((1, 2, 3, 1, 2, 3, 4, 5, 2, 3, 4, 2, 4, 2), 3))
+print(remove_first_occurrence((2, 4, 6, 6, 4, 2), 9))
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/3e3dd1f1-8b81-4f89-ba7d-2a8305abb3ec)
+
+
+
+
+
+
+## Самостоятельная работа №3
+### Ребята поспорили кто из них одним нажатием на numpad наберет больше повторяющихся цифр, но не понимают, как узнать победителя. Вам им нужно в этом помочь. Дана строка в виде случайной последовательности чисел от 0 до 9 (длина строки минимум 15 символов). Требуется создать словарь, который в качестве ключей будет принимать данные числа (т. е. ключи будут типом int), а в качестве значений – количество этих чисел в имеющейся последовательности. Для построения словаря создайте функцию, принимающую строку из цифр. Функция должна возвратить словарь из 3-х самых часто встречаемых чисел, также эти значения нужно вывести в порядке возрастания ключа.
+
+```python
+from collections import Counter
+
+def top_three_digits(digit_string):
+    count = Counter(digit_string)
+
+    most_common = count.most_common(3)
+
+    result = {int(key): value for key, value in most_common}
+
+    return dict(sorted(result.items()))
+
+
+digit_string = "123456789012345678901234567890"
+result = top_three_digits(digit_string)
+print(result)
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/494e6f4a-ae97-4025-8d6d-864af406e96d)
+
+
+
+
+
+
+## Самостоятельная работа №4
+### Ваш хороший друг владеет офисом со входом по электронным картам, ему нужно чтобы вы написали программу, которая показывала в каком порядке сотрудники входили и выходили из офиса. Определение сотрудника происходит по id. Напишите функцию, которая на вход принимает кортеж и случайный элемент (id), его можно придумать самостоятельно. Требуется вернуть новый кортеж, начинающийся с первого появления элемента в нем и заканчивающийся вторым его появлением включительно. Если элемента нет вовсе – вернуть пустой кортеж. Если элемент встречается только один раз, то вернуть кортеж, который начинается с него и идет до конца исходного.
+Входные данные:
+(1, 2, 3), 8)
+(1, 8, 3, 4, 8, 8, 9, 2), 8)
+(1, 2, 8, 5, 1, 2, 9), 8)
+Ожидаемый результат:
+()
+(8, 3, 4, 8)
+(8, 5, 1, 2, 9)
+
+```python
+def get_employee_timeframe(logs, employee_id):
+
+    first_index = -1
+    second_index = -1
+
+    for index, value in enumerate(logs):
+        if value == employee_id:
+            if first_index == -1:
+                first_index = index
+            elif second_index == -1:
+                second_index = index
+                break
+
+    if first_index == -1:
+        return ()
+    if second_index == -1:
+        return logs[first_index:]
+    return logs[first_index:second_index + 1]
+
+
+print(get_employee_timeframe((1, 2, 3), 8))
+print(get_employee_timeframe((1, 8, 3, 4, 8, 8, 9, 2), 8))
+print(get_employee_timeframe((1, 2, 8, 5, 1, 2, 9), 8))
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/97e09cd2-c6f2-4603-8e59-1f28ca768b0a)
+
+
+
+
+
+
+## Самостоятельная работа №5
+### Нужно посчитать уникальные элементы списка.
+### Тест 1:
+
+Входные данные: ['apple', 'banana', 'apple', 'orange', 'banana', 'kiwi']
+Ожидаемый результат: (('apple', 2), ('banana', 2), ('kiwi', 1), ('orange', 1))
+### Тест 2:
+
+Входные данные: ['carrot', 'beet', 'carrot', 'potato', 'beet', 'carrot']
+Ожидаемый результат: (('beet', 2), ('carrot', 3), ('potato', 1))
+### Тест 3:
+
+Входные данные: ['dog', 'cat', 'dog', 'mouse', 'cat', 'cat']
+Ожидаемый результат: (('cat', 3), ('dog', 2), ('mouse', 1))
+```python
+def unique_sorted_items(purchases):
+    item_count = {}
+
+    for item in purchases:
+        if item in item_count:
+            item_count[item] += 1
+        else:
+            item_count[item] = 1
+
+    sorted_items = sorted(item_count.keys())
+
+    result = tuple((item, item_count[item]) for item in sorted_items)
+
+    return result
+
+
+print(unique_sorted_items(['apple', 'banana', 'apple', 'orange', 'banana', 'kiwi']))
+print(unique_sorted_items(['carrot', 'beet', 'carrot', 'potato', 'beet', 'carrot']))
+print(unique_sorted_items(['dog', 'cat', 'dog', 'mouse', 'cat', 'cat']))
+```
+
+### Результат.
+
+
+
+![image](https://github.com/user-attachments/assets/186ac609-b774-4f5e-aa29-b9c531c3b876)
+
