@@ -1,14 +1,22 @@
-def analyze_text(directory):
-    with open(directory, 'r', encoding='utf-8') as file:
-        lines = file.readlines()
-    total_letters = 0
-    total_words = 0
-    total_lines = len(lines)
-    for line in lines:
-        total_letters += sum(c.isalpha() and c.isascii() for c in line)
-        total_words += len(line.split())
-    print(f"Количество букв латинского алфавита: {total_letters}")
-    print(f"Количество слов: {total_words}")
-    print(f"Количество строк: {total_lines}")
+class Human:
+    def __init__(self, age, name):
+        self.age = age
+        self.name = name
 
-analyze_text(r'C:\Users\Глеб\PycharmProjects\lab_1\input.txt')
+    def introduce(self):
+        print(f"Hi, my name is {self.name}, I am {self.age} years old.")
+
+Gleb = Human("23", "Gleb")
+Gleb.introduce()
+
+class Student(Human):
+    def __init__(self, age, name, student_id):
+        super().__init__(age, name)
+        self.student_id = student_id
+
+    def study(self):
+        print(f"{self.name} is studying with student ID {self.student_id}.")
+
+student_gleb = Student("23", "Gleb", "S12345")
+student_gleb.introduce()
+student_gleb.study()

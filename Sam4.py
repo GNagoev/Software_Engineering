@@ -1,17 +1,26 @@
-import re
+class Human:
+    def __init__(self, age, name):
+        self._age = age
+        self._name = name
 
-def load_banned_words(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        return [line.strip() for line in file.readlines()]
-def replace_banned_words(sentence, banned_words):
-    for word in banned_words:
-        pattern = re.compile(re.escape(word), re.IGNORECASE)
-        sentence = pattern.sub('*' * len(word), sentence)
-    return sentence
-def main():
-    banned_words = load_banned_words('input.txt')
-    sentence = "Hello, world! Python IS the programming language of thE future. My EMAIL is.... PYTHON is awesome!!!!"
-    result = replace_banned_words(sentence, banned_words)
-    print("Результат:", result)
-if __name__ == "__main__":
-    main()
+    def introduce(self):
+        print(f"Hi, my name is {self._name}, I am {self.get_age()} years old.")
+
+    def get_age(self):
+        return self._age
+
+    def set_age(self, age):
+        self._age = age
+
+    def get_name(self):
+        return self._name
+
+    def set_name(self, name):
+        self._name = name
+
+Gleb = Human("23", "Gleb")
+Gleb.introduce()
+
+Gleb.set_age("24")
+Gleb.set_name("Gleb Nagoev")
+Gleb.introduce()
