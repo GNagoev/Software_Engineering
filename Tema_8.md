@@ -1,5 +1,5 @@
-# Тема 7. Работа с файлами (ввод, вывод).
-Отчет по Теме #7 выполнил:
+# Тема 8. Введение в ООП.
+Отчет по Теме #8 выполнил:
 - Нагоев Глеб Романович
 - ИВТ-22-2
 
@@ -19,7 +19,8 @@
 
 
 ## Лабораторная работа №1
-### Составьте текстовый файл и положите его в одну директорию с программой на Python. Текстовый файл должен состоять минимум из двух строк.
+### Создайте класс “Car” с атрибутами производитель и модель. Создайте объект этого класса. Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями.
+
 
 ```python
 class Car:  # Определяем класс Car
@@ -32,26 +33,32 @@ my_car = Car("Toyota", "Corolla")  # Создаем экземпляр клас�
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/829758be-520e-4f79-8989-8a19f9494396)
-
-
+![image](https://github.com/user-attachments/assets/6545d9ef-fb70-4502-a028-f6e7d30ef53a)
 
 
 
 
 ## Лабораторная работа №2
-### Напишите программу, которая выведет только первую строку из вашего файла, при этом используйте конструкцию open()/close().
+### Дополните код из первого задания, добавив в него атрибуты и методы класса, заставьте машину “поехать”. Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями и получившийся вывод в консоль.
 
 ```python
-f = open('input.txt', 'r')
-print(f.readline())
-f.close()
+class Car:  # Определяем класс Car
+    def __init__(self, make, model):  # Определяем метод инициализации (конструктор),он принимает параметры make и model.
+        self.make = make  # Сохраняем марку автомобиля в атрибуте make объекта.
+        self.model = model  # Сохраняем модель автомобиля в атрибуте model объекта.
+
+    def drive(self):  # Определяем метод drive, который описывает действие вождения автомобиля.
+        print(f"Driving the {self.make} {self.model}")  # Выводим сообщение о том, что мы за рулем автомобился, с указанием его марки и модели.
+
+my_car = Car("Toyota", "Corolla")  # Создаем экземпляр класса Car с маркой "Toyota" и моделью "Corolla".
+my_car.drive()  # Вызываем метод drive у экземпляра my_car, чтобы вывести сообщение о вождении.
 ```
 
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/359e3356-da6b-456c-a642-c4bcbae98b56)
+![image](https://github.com/user-attachments/assets/7bd5e196-d0ae-4247-9d53-13a2d72cd015)
+
 
 
 
@@ -59,20 +66,40 @@ f.close()
 
 
 ## Лабораторная работа №3
-### Напишите программу, которая выведет все строки из вашего файла в массиве, при этом используйте конструкцию open()/close().
+### Создайте новый класс “ElectricCar” с методом “charge” и атрибутом емкость батареи. Реализуйте его наследование от класса, созданного в первом задании. Заставьте машину поехать, а потом заряжаться. Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями и получившийся вывод в консоль.
 
 
 ```python
-f = open('input.txt', 'r')
-print(f.readlines())
-f.close()
+class Car:  # Определяем класс Car
+    def __init__(self, make, model):  # Определяем метод инициализации (конструктор), он принимает параметры make и model.
+        self.make = make  # Сохраняем марку автомобиля в атрибуте make объекта.
+        self.model = model  # Сохраняем модель автомобиля в атрибуте model объекта.
+
+    def drive(self):  # Определяем метод drive, который описывает действие вождения автомобиля.
+        print(f"Driving the {self.make} {self.model}")  # Выводим сообщение о том, что мы за рулем автомобиля, с указанием его марки и модели.
+
+my_car = Car("Toyota", "Corolla")  # Создаем экземпляр класса Car с маркой "Toyota" и моделью "Corolla".
+my_car.drive()  # Вызываем метод drive у экземпляра my_car, чтобы вывести сообщение о вождении.
+
+class ElectricCar(Car):  # Определяем класс ElectricCar, который наследуется от класса Car.
+    def __init__(self, make, model, battery_capacity):  # Определяем метод инициализации, который принимает параметры make, model и battery_capacity.
+        super().__init__(make, model)  # Вызываем метод инициализации родительского класса Car.
+        self.battery_capacity = battery_capacity  # Сохраняем емкость батареи в атрибуте battery_capacity объекта.
+
+    def charge(self):  # Определяем метод charge, который описывает действие зарядки электромобиля.
+        print(f"Charging the {self.make} {self.model} with {self.battery_capacity} kWh")  # Выводим сообщение о зарядке автомобиля с указанием его марки, модели и емкости батареи.
+
+my_electric_car = ElectricCar("Tesla", "Model S", 75)  # Создаем экземпляр класса ElectricCar с маркой "Tesla", моделью "Model S" и емкостью батареи 75 kWh.
+my_electric_car.drive()  # Вызываем метод drive у экземпляра my_electric_car, чтобы вывести сообщение о вождении.
+my_electric_car.charge()  # Вызываем метод charge у экземпляра my_electric_car, чтобы вывести сообщение о зарядке.
 ```
 
 
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/2a8f2e97-d78d-4d59-9181-fe669a1cdb4a)
+![image](https://github.com/user-attachments/assets/af958559-2d98-4166-8817-966755f8e1ce)
+
 
 
 
@@ -80,16 +107,26 @@ f.close()
 
 
 ## Лабораторная работа №4
-### Напишите программу, которая выведет все строки из вашего файла в массиве, при этом используйте конструкцию with open().
+### Реализуйте инкапсуляцию для класса, созданного в первом задании. Создайте защищенный атрибут производителя и приватный атрибут модели. Вызовите защищенный атрибут и заставьте машину поехать. Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями и получившийся вывод в консоль.
 
 ```python
-with open('input.txt') as f:
-    print(f.readlines())
+class Car:  # Определяем класс Car
+    def __init__(self, make, model):  # Определяем метод инициализации (конструктор), он принимает параметры make и model.
+        self._make = make  # Сохраняем марку автомобиля в защищенном атрибуте make объекта.
+        self.__model = model  # Сохраняем модель автомобиля в приватном атрибуте model объекта.
+
+    def drive(self):  # Определяем метод drive, который описывает действие вождения автомобиля.
+        print(f"Driving the {self._make} {self.__model}")  # Выводим сообщение о том, что мы за рулем автомобиля, с указанием его марки и модели.
+
+my_car = Car("Toyota", "Corolla")  # Создаем экземпляр класса Car с маркой "Toyota" и моделью "Corolla".
+print(my_car._make) # Доступ к защищенному атрибуту.
+my_car.drive()  # Вызываем метод drive у экземпляра my_car, чтобы вывести сообщение о вождении.
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/ff985bac-198d-497c-b3db-5994d72e7e25)
+![image](https://github.com/user-attachments/assets/ca8851a6-ac84-465c-97e3-917423687970)
+
 
 
 
@@ -97,278 +134,203 @@ with open('input.txt') as f:
 
 
 ## Лабораторная работа №5
-### Напишите программу, которая выведет каждую строку из вашего файла отдельно, при этом используйте конструкцию with open().
+### Реализуйте полиморфизм создав основной (общий) класс “Shape”, а также еще два класса “Rectangle” и “Circle”. Внутри последних двух классов реализуйте методы для подсчета площади фигуры. После этого создайте массив с фигурами, поместите туда круг и прямоугольник, затем при помощи цикла выведите их площади. Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями и получившийся вывод в консоль.
 
 ```python
-with open('input.txt') as f:
-    for line in f:
-        print(line)
+class Shape:  # Определяем общий класс Shape
+    def area(self):  # Определяем метод для расчета площади (будет переопределен в дочерних классах)
+        pass
+
+class Rectangle(Shape):  # Определяем класс Rectangle, наследующий от Shape
+    def __init__(self, width, height):  # Метод инициализации, принимающий ширину и высоту
+        self.width = width  # Сохраняем ширину
+        self.height = height  # Сохраняем высоту
+
+    def area(self):  # Переопределяем метод area для расчета площади прямоугольника
+        return self.width * self.height  # Возвращаем площадь
+
+class Circle(Shape):  # Определяем класс Circle, наследующий от Shape
+    def __init__(self, radius):  # Метод инициализации, принимающий радиус
+        self.radius = radius  # Сохраняем радиус
+
+    def area(self):  # Переопределяем метод area для расчета площади круга
+        return 3.14 * self.radius * self.radius  # Возвращаем площадь
+
+# Создаем массив с фигурами
+shapes = [Rectangle(5, 4), Circle(3)]  # Добавляем экземпляры прямоугольника и круга
+
+# Выводим площади фигур
+for shape in shapes:  # Проходим по каждой фигуре в массиве
+    print(f"The area is: {shape.area()}")  # Вызываем метод area и выводим площадь
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/a84665cf-3c74-4ef7-9c2b-624a537966a4)
+![image](https://github.com/user-attachments/assets/788dd383-2417-4d9f-877f-c8cf8d7ccd11)
 
 
 
-## Лабораторная работа №6
-### Напишите программу, которая будет добавлять новую строку в ваш файл, а потом выведет полученный файл в консоль. Вывод можно осуществлять любым способом. Обязательно проверьте сам файл, чтобы изменения в нем тоже отображались.
-
-```python
-with open('input.txt', 'a+') as f:
-    f.write('\nIm additional line')
-
-with open('input.txt', 'r') as f:
-    result = f.readlines()
-    print(result)
-```
-
-### Результат.
-
-![image](https://github.com/user-attachments/assets/b110b701-1f5d-4cb1-9f2f-48f2bc75b42e)
-
-
-![image](https://github.com/user-attachments/assets/1f771657-a090-4b4a-b8ae-03738e7998bc)
-
-
-
-## Лабораторная работа №7
-### Напишите программу, которая перепишет всю информацию, которая была у вас в файле до этого, например напишет любые данные из произвольно вами составленного списка. Также не забудьте проверить что измененная вами информация сохранилась в файле.
-
-```python
-lines = ['one', 'two', 'three']
-with open ('input.txt', 'w') as f:
-    for line in lines:
-        f.write('\nCycle run ' + line)
-    print('Done!')
-```
-
-### Результат.
-
-![image](https://github.com/user-attachments/assets/bf734a55-bb41-451d-9859-afdf192ecc1d)
-
-![image](https://github.com/user-attachments/assets/25a77885-db64-485f-a8b9-98c251780dcc)
-
-
-
-## Лабораторная работа №8
-### Выберите любую папку на своем компьютере, имеющую вложенные директории. Выведите на печать в терминал ее содержимое, как и всех подкаталогов при помощи функции print_docs(directory).
-
-```python
-import os
-
-
-def print_docs(directory):
-    all_files = os.walk(directory)
-    for catalog in all_files:
-        print(f'Папка{catalog[0]} содержит:')
-    print(f'Директории: {", ".join([folder for folder in catalog[1]])}')
-    print(f'Файлы: {", ".join([file for file in catalog[2]])}')
-    print('-' * 40)
-
-
-print_docs(r'C:\Users\Глеб\Software_Engineering\pic')
-```
-
-### Результат.
-
-![image](https://github.com/user-attachments/assets/d43c54d7-d94c-4b49-86f4-8428ca658a06)
-
-
-## Лабораторная работа №9
-### Документ «input.txt» содержит следующий текст:
-Приветствие
-Спасибо
-Извините
-Пожалуйста
-До свидания
-Ты готов?
-Как дела?
-С днем рождения!
-Удача!
-Я тебя люблю.
-### Требуется реализовать функцию, которая выводит слово, имеющее максимальную длину (или список слов, если таковых несколько).
-
-
-```python
-def longest_words(file):
-    with open (file, encoding='utf-8') as f:
-        words = f.read().split()
-        max_length = len(max(words, key=len))
-        for word in words:
-            if len(word) == max_length:
-                sought_words = word
-
-        if len(sought_words) == 1:
-            return sought_words[0]
-        return sought_words
-
-
-print(longest_words('input.txt'))
-```
-
-### Результат.
-
-![image](https://github.com/user-attachments/assets/8bf5c901-e22b-4d57-b425-9e18cd3728e9)
-
-![image](https://github.com/user-attachments/assets/fb97c2da-8878-4790-98e1-4e28acbb4dad)
-
-![image](https://github.com/user-attachments/assets/3cc4c9ea-bc15-40ac-ba83-0854b5e0d83d)
-
-
-## Лабораторная работа №10
-### Требуется создать csv-файл «rows_300.csv» со следующими
-столбцами:
-• № - номер по порядку (от 1 до 300);
-• Секунда – текущая секунда на вашем ПК;
-• Микросекунда – текущая миллисекунда на часах.
-### Для наглядности на каждой итерации цикла искусственно приостанавливайте скрипт на 0,01 секунды.
-
-```python
-import csv
-import datetime
-import time
-
-with open('rows_300.csv', 'w', encoding='utf-8', newline='') as f:
-    writer = csv.writer(f)
-    writer.writerow(['№', 'Секунда ', 'Микросекунда'])
-    for line in range(1, 301):
-        writer.writerow([line, datetime.datetime.now().second,
-                         datetime.datetime.now().microsecond])
-        time.sleep(0.01)
-```
-
-### Результат.
-
-![image](https://github.com/user-attachments/assets/2cccc32a-6270-4f8e-8ad3-e51c4ed20e12)
-
-![image](https://github.com/user-attachments/assets/5db713ad-ff60-4c59-a450-5651f059cf47)
 
 
 
 ## Самостоятельная работа №1
-### Найдите в интернете любую статью (объем статьи не менее 200 слов), скопируйте ее содержимое в файл и напишите программу, которая считает количество слов в текстовом файле и определит самое часто встречающееся слово. Результатом выполнения задачи будет: скриншот файла со статьей, листинг кода, и вывод в консоль, в котором будет указана вся необходимая информация.
+### Самостоятельно создайте класс и его объект. Они должны отличаться, от тех, что указаны в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 
 ```python
-from collections import Counter
-import re
+class Human:
+    def __init__(self, age, sex):
+        self.age = age
+        self.sex = sex
 
-
-def analyze_text_file(directory):
-    try:
-        with open(directory, 'r', encoding='utf-8') as file:
-            text = file.read()
-        words = re.findall(r'\b\w+\b', text.lower())
-        word_count = len(words)
-        word_frequency = Counter(words)
-        most_common_word, most_common_count = word_frequency.most_common(1)[0]
-        print(f"Количество слов в файле: {word_count}")
-        print(f"Самое часто встречающееся слово: '{most_common_word}' (встречается {most_common_count} раз)")
-
-analyze_text_file(r'C:\Users\Глеб\PycharmProjects\lab_1\input.txt')
+Gleb = Human("23", "Male")
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/4f4fd71d-ba7d-4d7d-be78-397b571e71fa)
+![image](https://github.com/user-attachments/assets/bad8cb0a-8c9d-460c-a7e2-4ec2cbf9f551)
 
-![image](https://github.com/user-attachments/assets/ec299c3a-8169-40b2-a196-3f62677371b6)
+
+
+
+## Самостоятельная работа №2
+### Самостоятельно создайте атрибуты и методы для ранее созданного класса. Они должны отличаться, от тех, что указаны в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
+
+```python
+class Human:
+    def __init__(self, age, name):
+        self.age = age
+        self.name = name
+    def introduce(self):
+        print((f"Hi, my name is {self.name}, i am {self.age} years old."))
+
+Gleb = Human("23", "Gleb")
+Gleb.introduce()
+```
+
+### Результат.
+
+
+![image](https://github.com/user-attachments/assets/7400f7ff-db20-42a2-9477-69f3fd3f58fa)
 
 
 
 ## Самостоятельная работа №3
-### Имеется файл input.txt с текстом на латинице. Напишите программу, которая выводит следующую статистику по тексту: количество букв латинского алфавита; число слов; число строк.
-Текст в файле:
-Beautiful is better than ugly.
-Explicit is better than implicit.
-Simple is better than complex.
+### Самостоятельно реализуйте наследование, продолжая работать с ранее созданным классом. Оно должно отличаться, от того, что указано в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 
-Ожидаемый результат:
-Input file contains:
-108 letters
-20 words
-4 lines
 ```python
-def analyze_text(directory):
-    with open(directory, 'r', encoding='utf-8') as file:
-        lines = file.readlines()
-    total_letters = 0
-    total_words = 0
-    total_lines = len(lines)
-    for line in lines:
-        total_letters += sum(c.isalpha() and c.isascii() for c in line)
-        total_words += len(line.split())
-    print(f"Количество букв латинского алфавита: {total_letters}")
-    print(f"Количество слов: {total_words}")
-    print(f"Количество строк: {total_lines}")
+class Human:
+    def __init__(self, age, name):
+        self.age = age
+        self.name = name
 
-analyze_text(r'C:\Users\Глеб\PycharmProjects\lab_1\input.txt')
+    def introduce(self):
+        print(f"Hi, my name is {self.name}, I am {self.age} years old.")
+
+Gleb = Human("23", "Gleb")
+Gleb.introduce()
+
+class Student(Human):
+    def __init__(self, age, name, student_id):
+        super().__init__(age, name)
+        self.student_id = student_id
+
+    def study(self):
+        print(f"{self.name} is studying with student ID {self.student_id}.")
+
+student_gleb = Student("23", "Gleb", "S12345")
+student_gleb.introduce()
+student_gleb.study()
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/f32e60dc-e180-4700-ba75-97edfe6dc710)
+![image](https://github.com/user-attachments/assets/e32bfc59-e418-4800-b7ef-83bfa39e9227)
 
-![image](https://github.com/user-attachments/assets/77a36dea-894b-4faf-9d6c-e0678c547516)
 
 
 ## Самостоятельная работа №4
-### Напишите программу, которая получает на вход предложение, выводит его в терминал, заменяя все запрещенные слова звездочками * (количество звездочек равно количеству букв в слове). Запрещенные слова, разделенные символом пробела, хранятся в текстовом файле input.txt. Все слова в этом файле записаны в нижнем регистре. Программа должна заменить запрещенные слова, где бы они ни встречались, даже в середине другого слова. Замена производится независимо от регистра: если файл input.txt содержит запрещенное слово exam, то слова exam, Exam, ExaM, EXAM и exAm должны быть заменены на ****.
-Запрещенные слова:
-hello email python the exam wor is
-• Предложение для проверки:
-Hello, world! Python IS the programming language of thE future. My
-EMAIL is....
-PYTHON is awesome!!!!
-• Ожидаемый результат:
-*****, ***ld! ****** ** *** programming language of *** future. My
-***** **....
-****** ** awesome!!!!
+### Самостоятельно реализуйте инкапсуляцию, продолжая работать с ранее созданным классом. Она должна отличаться, от того, что указана в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 
 ```python
-import re
+class Human:
+    def __init__(self, age, name):
+        self._age = age
+        self._name = name
 
-def load_banned_words(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        return [line.strip() for line in file.readlines()]
-def replace_banned_words(sentence, banned_words):
-    for word in banned_words:
-        pattern = re.compile(re.escape(word), re.IGNORECASE)
-        sentence = pattern.sub('*' * len(word), sentence)
-    return sentence
-def main():
-    banned_words = load_banned_words('input.txt')
-    sentence = "Hello, world! Python IS the programming language of thE future. My EMAIL is.... PYTHON is awesome!!!!"
-    result = replace_banned_words(sentence, banned_words)
-    print("Результат:", result)
-if __name__ == "__main__":
-    main()
+    def introduce(self):
+        print(f"Hi, my name is {self._name}, I am {self.get_age()} years old.")
+
+    def get_age(self):
+        return self._age
+
+    def set_age(self, age):
+        self._age = age
+
+    def get_name(self):
+        return self._name
+
+    def set_name(self, name):
+        self._name = name
+
+Gleb = Human("23", "Gleb")
+Gleb.introduce()
+
+Gleb.set_age("24")
+Gleb.set_name("Gleb Nagoev")
+Gleb.introduce()
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/70310ae7-4e41-4c8c-a6e0-c9c8d2f3e66e)
+![image](https://github.com/user-attachments/assets/38de1520-10f7-4d3e-b901-70d4cd1c6692)
 
-![image](https://github.com/user-attachments/assets/064db146-13c4-4733-af45-d5966c782cc1)
 
 
 
 ## Самостоятельная работа №5
-### Дан текстовый файл. Замени все заглавные буквы на строчные.
-```python
-def read_and_convert(directory):
-    with open(directory, 'r', encoding='utf-8') as file:
-        content = file.read()
-    modified_content = content.lower()
-    print(modified_content)
+### Самостоятельно реализуйте полиморфизм. Он должен отличаться, от того, что указан в теоретическом материале (методичке) и лабораторных заданиях. Результатом выполнения задания будет листинг кода и получившийся вывод консоли.
 
-read_and_convert(r'C:\Users\Глеб\PycharmProjects\lab_1\input.txt')
+```python
+class Human:
+    def __init__(self, age, name):
+        self.age = age
+        self.name = name
+
+    def introduce(self):
+        print(f"Hi, my name is {self.name}, I am {self.age} years old.")
+
+class Student(Human):
+    def __init__(self, age, name, student_id):
+        super().__init__(age, name)
+        self.student_id = student_id
+
+    def study(self):
+        print(f"{self.name} is studying with student ID {self.student_id}.")
+
+class Teacher(Human):
+    def __init__(self, age, name, subject):
+        super().__init__(age, name)
+        self.subject = subject
+
+    def introduce(self):
+        print(f"Hello, I am {self.name}, I teach {self.subject} and I am {self.age} years old.")
+
+people = [
+    Student("23", "Gleb", "S12345"),
+    Teacher("30", "Alice", "Mathematics")
+]
+
+for person in people:
+    person.introduce()
+
+for person in people:
+    if isinstance(person, Student):
+        person.study()
 ```
 
 ### Результат.
 
 
-![image](https://github.com/user-attachments/assets/d8599b3a-d124-47d2-94d9-95cf3be82a17)
+![image](https://github.com/user-attachments/assets/fb81a0a8-bd03-47bd-8897-ef43b50e2d2f)
 
-![image](https://github.com/user-attachments/assets/f1690a00-1d60-44a3-a43b-7994cebad40e)
 
