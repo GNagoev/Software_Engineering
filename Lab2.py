@@ -1,3 +1,11 @@
-f = open('input.txt', 'r')
-print(f.readline())
-f.close()
+class Car:  # Определяем класс Car
+    def __init__(self, make, model):  # Определяем метод инициализации (конструктор),он принимает параметры make и model.
+        self.make = make  # Сохраняем марку автомобиля в атрибуте make объекта.
+        self.model = model  # Сохраняем модель автомобиля в атрибуте model объекта.
+
+    def drive(self):  # Определяем метод drive, который описывает действие вождения автомобиля.
+        print(f"Driving the {self.make} {self.model}")  # Выводим сообщение о том, что мы за рулем автомобился, с указанием его марки и модели.
+
+my_car = Car("Toyota", "Corolla")  # Создаем экземпляр класса Car с маркой "Toyota" и моделью "Corolla".
+my_car.drive()  # Вызываем метод drive у экземпляра my_car, чтобы вывести сообщение о вождении.
+
