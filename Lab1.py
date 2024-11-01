@@ -1,6 +1,16 @@
-class Car:  # Определяем класс Car
-    def __init__(self, make, model):  # Определяем метод инициализации (конструктор),он принимает параметры make и model.
-        self.make = make  # Сохраняем марку автомобиля в атрибуте make объекта.
-        self.model = model  # Сохраняем модель автомобиля в атрибуте model объекта.
+class Gleb:
+    __slots__ = ['name']
 
-my_car = Car("Toyota", "Corolla")  # Создаем экземпляр класса Car с маркой "Toyota" и моделью "Corolla".
+    def __init__(self, name):
+        if name == 'Глеб':
+            self.name = f"Да, я {name}"
+        else:
+            self.name = f"Я не {name}, а Глеб"
+
+
+person1 = Gleb('Иван')
+person2 = Gleb('Глеб')
+print(person1.name)
+print(person2.name)
+
+person2.surname = 'Нагоев'
