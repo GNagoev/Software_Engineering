@@ -19,20 +19,31 @@
 
 
 ## Лабораторная работа №1
-### Составьте текстовый файл и положите его в одну директорию с программой на Python. Текстовый файл должен состоять минимум из двух строк.
+### Допустим, что вы решили оригинально и немного странно познакомится с человеком. Для этого у вас должен быть написан свой класс на Python, который будет проверять угадал ваше имя человек или нет. Для этого создайте класс, указав в свойствах только имя. Дальше создайте функцию __init__(), а в ней сделайте проверку на то угадал человек ваше имя или нет. Также можете проверить что будет, если в этой функции указав атрибут, который не указан в вашем классе, например, попробуйте вызвать фамилию.
 
 ```python
-class Car:  # Определяем класс Car
-    def __init__(self, make, model):  # Определяем метод инициализации (конструктор),он принимает параметры make и model.
-        self.make = make  # Сохраняем марку автомобиля в атрибуте make объекта.
-        self.model = model  # Сохраняем модель автомобиля в атрибуте model объекта.
+class Gleb:
+    __slots__ = ['name']
 
-my_car = Car("Toyota", "Corolla")  # Создаем экземпляр класса Car с маркой "Toyota" и моделью "Corolla".
+    def __init__(self, name):
+        if name == 'Глеб':
+            self.name = f"Да, я {name}"
+        else:
+            self.name = f"Я не {name}, а Глеб"
+
+
+person1 = Gleb('Иван')
+person2 = Gleb('Глеб')
+print(person1.name)
+print(person2.name)
+
+person2.surname = 'Нагоев'
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/829758be-520e-4f79-8989-8a19f9494396)
+![image](https://github.com/user-attachments/assets/ad6e3e70-994b-4db6-9ef4-81646bfd3513)
+
 
 
 
@@ -40,18 +51,35 @@ my_car = Car("Toyota", "Corolla")  # Создаем экземпляр клас�
 
 
 ## Лабораторная работа №2
-### Напишите программу, которая выведет только первую строку из вашего файла, при этом используйте конструкцию open()/close().
+### Вам дали важное задание, написать продавцу мороженого программу, которая будет писать добавили ли топпинг в мороженое и цену после возможного изменения. Для этого вам нужно написать класс, в котором будет определяться изменили ли состав мороженого или нет. В этом классе реализуйте метод, выводящий на печать «Мороженое с {ТОППИНГ}» в случае наличия добавки, а иначе отобразится следующая фраза: «Обычное мороженое». При этом программа должна воспринимать как топпинг только атрибуты типа string..
 
 ```python
-f = open('input.txt', 'r')
-print(f.readline())
-f.close()
+class Icecream:
+    def __init__(self, ingredient=None):
+        if isinstance(ingredient, str):
+            self.ingredient = ingredient
+        else:
+            self.ingredient = None
+
+    def composition(self):
+        if self.ingredient:
+            print(f"Мороженое с {self.ingredient}")
+        else:
+            print('Обычное мороженое')
+
+
+icecream = Icecream()
+icecream.composition()
+icecream = Icecream('шоколадом')
+icecream.composition()
+icecream = Icecream(5)
+icecream.composition()
 ```
 
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/359e3356-da6b-456c-a642-c4bcbae98b56)
+![image](https://github.com/user-attachments/assets/caca58ff-1acc-4a47-bef5-28e928065f27)
 
 
 
@@ -59,20 +87,50 @@ f.close()
 
 
 ## Лабораторная работа №3
-### Напишите программу, которая выведет все строки из вашего файла в массиве, при этом используйте конструкцию open()/close().
+### Петя – начинающий программист и на занятиях ему сказали реализовать икапсу…что-то. А вы хороший друг Пети и ко всему прочему прекрасно знаете, что икапсу…что-то – это инкапсуляция, поэтому решаете помочь вашему другу с написанием класса с инкапсуляцией. Ваш класс будет не
+просто инкапсуляцией, а классом с сеттером, геттером и деструктором. После написания класса вам необходимо продемонстрировать что все написанные вами функции работают. Также вас необходимо объяснить Пете почему на скриншоте ниже в консоли выводится ошибка.
 
 
 ```python
-f = open('input.txt', 'r')
-print(f.readlines())
-f.close()
-```
+class MyClass:
+    def __init__(self, value):
+        self._value = value
+
+    def set_value(self, value):
+        self._value = value
+
+    def get_value(self):
+        if hasattr(self, '_value'):
+            return self._value
+        else:
+            raise AttributeError("Значение было удалено")
+
+    def del_value(self):
+        del self._value
+
+    value = property(get_value, set_value, del_value, "Свойство value")
+
+
+obj = MyClass(42)
+print(obj.value)
+obj.set_value(45)
+print(obj.value)
+obj.set_value(100)
+print(obj.value)
+obj.del_value()
+try:
+    print(obj.value)
+except AttributeError as e:
+    print(e)
+``` 
+### Проблема была в том что геттер принимал value, и в том что после удаления value, мы пытались вывести его без проверки его удалдения.
 
 
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/2a8f2e97-d78d-4d59-9181-fe669a1cdb4a)
+![image](https://github.com/user-attachments/assets/c2256f8b-965e-47c5-bbd2-de2bb83add68)
+
 
 
 
@@ -80,16 +138,33 @@ f.close()
 
 
 ## Лабораторная работа №4
-### Напишите программу, которая выведет все строки из вашего файла в массиве, при этом используйте конструкцию with open().
+### Вам прекрасно известно, что кошки и собаки являются млекопитающими, но компьютер этого не понимает, поэтому вам нужно написать три класса: Кошки, Собаки, Млекопитающие. И при помощи “наследования” объяснить компьютеру что кошки и собаки – это млекопитающие. Также добавьте какой-нибудь свой атрибут для кошек и собак, чтобы показать, что они чем-то отличаются друг от друга.
 
 ```python
-with open('input.txt') as f:
-    print(f.readlines())
+class Mammal:
+    className = 'Mammal'
+
+
+class Dog(Mammal):
+    species = 'canine'
+    sounds = 'wow'
+
+
+class Cat(Mammal):
+    species = 'feline'
+    sounds = 'meow'
+
+
+dog = Dog()
+print(f"Dog is {dog.className}, but they say {dog.sounds}")
+cat = Cat()
+print(f"Cat is {cat.className}, but they say {cat.sounds}")
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/ff985bac-198d-497c-b3db-5994d72e7e25)
+![image](https://github.com/user-attachments/assets/1598dc8f-5528-4f62-bc5e-1a0f065881f0)
+
 
 
 
@@ -97,278 +172,214 @@ with open('input.txt') as f:
 
 
 ## Лабораторная работа №5
-### Напишите программу, которая выведет каждую строку из вашего файла отдельно, при этом используйте конструкцию with open().
+### На разных языках здороваются по-разному, но суть остается одинаковой, люди друг с другом здороваются. Давайте вместе с вами реализуем программу с полиморфизмом, которая будет описывать всю суть первого предложения задачи. Для этого мы можем выбрать два языка, например, русский и английский и написать для них отдельные классы, в которых будет в виде атрибута слово, которым здороваются на этих языках. А также напишем функцию, которая будет выводить информацию о том, как на этих языках здороваются. Заметьте, что для решения поставленной задачи мы использовали декоратор @staticmethod, поскольку нам не нужны обязательные параметры-ссылки вроде self.
+
 
 ```python
-with open('input.txt') as f:
-    for line in f:
-        print(line)
+class Russian:
+    @staticmethod
+    def greeting():
+        print("Привет")
+
+
+class English:
+    @staticmethod
+    def greeting():
+        print("Hello")
+
+
+def greet(language):
+    language.greeting()
+
+
+ivan = Russian()
+greet(ivan)
+john = English()
+greet(john)
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/a84665cf-3c74-4ef7-9c2b-624a537966a4)
+![image](https://github.com/user-attachments/assets/50af5042-d942-485a-a04a-a3246a220ed7)
 
 
 
-## Лабораторная работа №6
-### Напишите программу, которая будет добавлять новую строку в ваш файл, а потом выведет полученный файл в консоль. Вывод можно осуществлять любым способом. Обязательно проверьте сам файл, чтобы изменения в нем тоже отображались.
-
-```python
-with open('input.txt', 'a+') as f:
-    f.write('\nIm additional line')
-
-with open('input.txt', 'r') as f:
-    result = f.readlines()
-    print(result)
-```
-
-### Результат.
-
-![image](https://github.com/user-attachments/assets/b110b701-1f5d-4cb1-9f2f-48f2bc75b42e)
-
-
-![image](https://github.com/user-attachments/assets/1f771657-a090-4b4a-b8ae-03738e7998bc)
-
-
-
-## Лабораторная работа №7
-### Напишите программу, которая перепишет всю информацию, которая была у вас в файле до этого, например напишет любые данные из произвольно вами составленного списка. Также не забудьте проверить что измененная вами информация сохранилась в файле.
-
-```python
-lines = ['one', 'two', 'three']
-with open ('input.txt', 'w') as f:
-    for line in lines:
-        f.write('\nCycle run ' + line)
-    print('Done!')
-```
-
-### Результат.
-
-![image](https://github.com/user-attachments/assets/bf734a55-bb41-451d-9859-afdf192ecc1d)
-
-![image](https://github.com/user-attachments/assets/25a77885-db64-485f-a8b9-98c251780dcc)
-
-
-
-## Лабораторная работа №8
-### Выберите любую папку на своем компьютере, имеющую вложенные директории. Выведите на печать в терминал ее содержимое, как и всех подкаталогов при помощи функции print_docs(directory).
-
-```python
-import os
-
-
-def print_docs(directory):
-    all_files = os.walk(directory)
-    for catalog in all_files:
-        print(f'Папка{catalog[0]} содержит:')
-    print(f'Директории: {", ".join([folder for folder in catalog[1]])}')
-    print(f'Файлы: {", ".join([file for file in catalog[2]])}')
-    print('-' * 40)
-
-
-print_docs(r'C:\Users\Глеб\Software_Engineering\pic')
-```
-
-### Результат.
-
-![image](https://github.com/user-attachments/assets/d43c54d7-d94c-4b49-86f4-8428ca658a06)
-
-
-## Лабораторная работа №9
-### Документ «input.txt» содержит следующий текст:
-Приветствие
-Спасибо
-Извините
-Пожалуйста
-До свидания
-Ты готов?
-Как дела?
-С днем рождения!
-Удача!
-Я тебя люблю.
-### Требуется реализовать функцию, которая выводит слово, имеющее максимальную длину (или список слов, если таковых несколько).
-
-
-```python
-def longest_words(file):
-    with open (file, encoding='utf-8') as f:
-        words = f.read().split()
-        max_length = len(max(words, key=len))
-        for word in words:
-            if len(word) == max_length:
-                sought_words = word
-
-        if len(sought_words) == 1:
-            return sought_words[0]
-        return sought_words
-
-
-print(longest_words('input.txt'))
-```
-
-### Результат.
-
-![image](https://github.com/user-attachments/assets/8bf5c901-e22b-4d57-b425-9e18cd3728e9)
-
-![image](https://github.com/user-attachments/assets/fb97c2da-8878-4790-98e1-4e28acbb4dad)
-
-![image](https://github.com/user-attachments/assets/3cc4c9ea-bc15-40ac-ba83-0854b5e0d83d)
-
-
-## Лабораторная работа №10
-### Требуется создать csv-файл «rows_300.csv» со следующими
-столбцами:
-• № - номер по порядку (от 1 до 300);
-• Секунда – текущая секунда на вашем ПК;
-• Микросекунда – текущая миллисекунда на часах.
-### Для наглядности на каждой итерации цикла искусственно приостанавливайте скрипт на 0,01 секунды.
-
-```python
-import csv
-import datetime
-import time
-
-with open('rows_300.csv', 'w', encoding='utf-8', newline='') as f:
-    writer = csv.writer(f)
-    writer.writerow(['№', 'Секунда ', 'Микросекунда'])
-    for line in range(1, 301):
-        writer.writerow([line, datetime.datetime.now().second,
-                         datetime.datetime.now().microsecond])
-        time.sleep(0.01)
-```
-
-### Результат.
-
-![image](https://github.com/user-attachments/assets/2cccc32a-6270-4f8e-8ad3-e51c4ed20e12)
-
-![image](https://github.com/user-attachments/assets/5db713ad-ff60-4c59-a450-5651f059cf47)
+### Задания для самостоятельного выполнения:
+Задание Садовник и помидоры.
+Классовая структура:
+Есть Помидор со следующими характеристиками:
+• Индекс
+• Стадия созревания (стадии: отсутствует, цветение, зеленый, красный)
+Помидор может:
+• Расти (переходить на следующую стадию созревания)
+• Предоставлять информацию о своей зрелости
+Есть Куст с помидорами, который:
+• Содержит список томатов, которые на нем растут
+А также может:
+• Расти вместе с томатами
+• Предоставлять информацию о зрелости всех томатов
+• Предоставлять урожай
+И также есть Садовник, который имеет:
+• Имя
+• Растение, за которым он ухаживает
+Он может:
+• Ухаживать за растением
+• Собирать с него урожай
+Задание:
+Класс Tomato:
+1) Создайте класс Tomato
+2) Создайте статическое свойство states, которое будет содержать все
+стадии созревания помидора
+3) Создайте метод __init__(), внутри которого будут определены два
+динамических свойства: _index (передается параметром) и _state
+(принимает первое значение из словаря states). После написания
+этого блока кода в комментарии к нему укажите какими являются
+эти два свойства
+4) Создайте метод grow(), который будет переводить томат на
+следующую стадию созревания
+5) Создайте метод is_ripe(), который будет проверять, что томат созрел
+Класс TomatoBush:
+1) Создайте класс TomatoBush
+2) Определите метод __init__(), который будет принимать в качестве
+параметра количество томатов и на его основе будет создавать
+список объектов класса Tomato. Данный список будет храниться
+внутри динамического свойства tomatoes
+3) Создайте метод grow_all(), который будет переводить все объекты
+из списка томатов на следующий этап созревания
+4) Создайте метод all_are_ripe(), который будет возвращать True, если
+все томаты из списка стали спелыми.
+5) Создайте метод give_away_all(), который будет чистить список
+томатов после сбора урожая
+Класс Gardener:
+1) Создайте класс Gardener
+2) Создайте метод __init__(), внутри которого будут определены два
+динамических свойства: name (передается параметром, является
+публичным) и _plant (принимает объект класса TomatoBush). После
+написания этого блока кода в комментарии к нему укажите какими
+являются эти два свойства
+3) Создайте метод work(), который заставляет садовника работать, что
+позволяет растению становиться более зрелым
+4) Создайте метод harvest(), который проверяет, все ли плоды созрели.
+Если все, то садовник собирает урожай. Если нет, то метод печатает
+предупреждение
+5) Создайте статический метод knowledge_base(), который выведет в
+консоль справку по садоводству
 
 
 
 ## Самостоятельная работа №1
-### Найдите в интернете любую статью (объем статьи не менее 200 слов), скопируйте ее содержимое в файл и напишите программу, которая считает количество слов в текстовом файле и определит самое часто встречающееся слово. Результатом выполнения задачи будет: скриншот файла со статьей, листинг кода, и вывод в консоль, в котором будет указана вся необходимая информация.
+###  Вызовите справку по садоводству.
 
 ```python
-from collections import Counter
-import re
-
-
-def analyze_text_file(directory):
-    try:
-        with open(directory, 'r', encoding='utf-8') as file:
-            text = file.read()
-        words = re.findall(r'\b\w+\b', text.lower())
-        word_count = len(words)
-        word_frequency = Counter(words)
-        most_common_word, most_common_count = word_frequency.most_common(1)[0]
-        print(f"Количество слов в файле: {word_count}")
-        print(f"Самое часто встречающееся слово: '{most_common_word}' (встречается {most_common_count} раз)")
-
-analyze_text_file(r'C:\Users\Глеб\PycharmProjects\lab_1\input.txt')
+class Tomato:
+    states = ['отсутствует', 'цветение', 'зеленый', 'красный']
+    
+    def __init__(self, index):
+        self._index = index  # Динамическое свойство: индекс помидора
+        self._state = self.states[0]  # Динамическое свойство: начальная стадия созревания (отсутствует)
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/4f4fd71d-ba7d-4d7d-be78-397b571e71fa)
+![image](https://github.com/user-attachments/assets/170f13c9-915e-4862-b470-b5e9e6b6c683)
 
-![image](https://github.com/user-attachments/assets/ec299c3a-8169-40b2-a196-3f62677371b6)
+
+
+
+## Самостоятельная работа №2
+### Создайте объекты классов TomatoBush и Gardener.
+
+```python
+class Tomato:
+    states = ['отсутствует', 'цветение', 'зеленый', 'красный']
+
+    def __init__(self, index):
+        self._index = index  # Динамическое свойство: индекс помидора
+        self._state = self.states[0]  # Динамическое свойство: начальная стадия созревания (отсутствует)
+
+    def grow(self):
+        current_index = self.states.index(self._state)
+        if current_index < len(self.states) - 1:
+            self._state = self.states[current_index + 1]
+
+    def is_ripe(self):
+        return self._state == 'красный'
+```
+
+### Результат.
+
+![image](https://github.com/user-attachments/assets/73c68184-efc4-4f37-b44f-d03abc55204c)
+
+
 
 
 
 ## Самостоятельная работа №3
-### Имеется файл input.txt с текстом на латинице. Напишите программу, которая выводит следующую статистику по тексту: количество букв латинского алфавита; число слов; число строк.
-Текст в файле:
-Beautiful is better than ugly.
-Explicit is better than implicit.
-Simple is better than complex.
+### Используя объект класса Gardener, поухаживайте за кустом с помидорами.
 
-Ожидаемый результат:
-Input file contains:
-108 letters
-20 words
-4 lines
+
 ```python
-def analyze_text(directory):
-    with open(directory, 'r', encoding='utf-8') as file:
-        lines = file.readlines()
-    total_letters = 0
-    total_words = 0
-    total_lines = len(lines)
-    for line in lines:
-        total_letters += sum(c.isalpha() and c.isascii() for c in line)
-        total_words += len(line.split())
-    print(f"Количество букв латинского алфавита: {total_letters}")
-    print(f"Количество слов: {total_words}")
-    print(f"Количество строк: {total_lines}")
+class TomatoBush:
+    def __init__(self, number_of_tomatoes):
+        self.tomatoes = [Tomato(i) for i in range(number_of_tomatoes)]
 
-analyze_text(r'C:\Users\Глеб\PycharmProjects\lab_1\input.txt')
+    def grow_all(self):
+        for tomato in self.tomatoes:
+            tomato.grow()
+
+    def all_are_ripe(self):
+        return all(tomato.is_ripe() for tomato in self.tomatoes)
+
+    def give_away_all(self):
+        self.tomatoes.clear()
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/f32e60dc-e180-4700-ba75-97edfe6dc710)
+![image](https://github.com/user-attachments/assets/a52bbe4a-e085-40bf-b622-5891ce6848aa)
 
-![image](https://github.com/user-attachments/assets/77a36dea-894b-4faf-9d6c-e0678c547516)
 
 
 ## Самостоятельная работа №4
-### Напишите программу, которая получает на вход предложение, выводит его в терминал, заменяя все запрещенные слова звездочками * (количество звездочек равно количеству букв в слове). Запрещенные слова, разделенные символом пробела, хранятся в текстовом файле input.txt. Все слова в этом файле записаны в нижнем регистре. Программа должна заменить запрещенные слова, где бы они ни встречались, даже в середине другого слова. Замена производится независимо от регистра: если файл input.txt содержит запрещенное слово exam, то слова exam, Exam, ExaM, EXAM и exAm должны быть заменены на ****.
-Запрещенные слова:
-hello email python the exam wor is
-• Предложение для проверки:
-Hello, world! Python IS the programming language of thE future. My
-EMAIL is....
-PYTHON is awesome!!!!
-• Ожидаемый результат:
-*****, ***ld! ****** ** *** programming language of *** future. My
-***** **....
-****** ** awesome!!!!
+### Попробуйте собрать урожай, когда томаты еще не дозрели. Продолжайте ухаживать за ними.
 
 ```python
-import re
+class Gardener:
+    def __init__(self, name, plant):
+        self.name = name  # Публичное свойство: имя садовника
+        self._plant = plant  # Динамическое свойство: куст помидоров
 
-def load_banned_words(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        return [line.strip() for line in file.readlines()]
-def replace_banned_words(sentence, banned_words):
-    for word in banned_words:
-        pattern = re.compile(re.escape(word), re.IGNORECASE)
-        sentence = pattern.sub('*' * len(word), sentence)
-    return sentence
-def main():
-    banned_words = load_banned_words('input.txt')
-    sentence = "Hello, world! Python IS the programming language of thE future. My EMAIL is.... PYTHON is awesome!!!!"
-    result = replace_banned_words(sentence, banned_words)
-    print("Результат:", result)
-if __name__ == "__main__":
-    main()
+    def work(self):
+        self._plant.grow_all()
+
+    def harvest(self):
+        if self._plant.all_are_ripe():
+            print(f"{self.name} собрал урожай!")
+            self._plant.give_away_all()
+        else:
+            print("Томаты еще не созрели.")
 ```
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/70310ae7-4e41-4c8c-a6e0-c9c8d2f3e66e)
-
-![image](https://github.com/user-attachments/assets/064db146-13c4-4733-af45-d5966c782cc1)
+![image](https://github.com/user-attachments/assets/9048e4b6-aa9e-432c-8e1f-23d1623282e2)
 
 
 
 ## Самостоятельная работа №5
-### Дан текстовый файл. Замени все заглавные буквы на строчные.
+### Соберите урожай.
 ```python
-def read_and_convert(directory):
-    with open(directory, 'r', encoding='utf-8') as file:
-        content = file.read()
-    modified_content = content.lower()
-    print(modified_content)
-
-read_and_convert(r'C:\Users\Глеб\PycharmProjects\lab_1\input.txt')
+    @staticmethod
+    def knowledge_base():
+        print("Справка по садоводству:\n"
+              "1. Сначала поливайте ваши растения.\n"
+              "2. После каждого полива проверяйте на зрелость.\n"
+              "3. Если плоды созрели, собирайте их.")
 ```
 
 ### Результат.
 
 
-![image](https://github.com/user-attachments/assets/d8599b3a-d124-47d2-94d9-95cf3be82a17)
+![image](https://github.com/user-attachments/assets/adec6ab5-e9db-4719-b6c9-e8bb844e07e6)
 
-![image](https://github.com/user-attachments/assets/f1690a00-1d60-44a3-a43b-7994cebad40e)
 
