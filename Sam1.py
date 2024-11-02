@@ -1,6 +1,6 @@
-class Human:
-    def __init__(self, age, sex):
-        self.age = age
-        self.sex = sex
+class Tomato:
+    states = ['отсутствует', 'цветение', 'зеленый', 'красный']
 
-Gleb = Human("23", "Male")
+    def __init__(self, index):
+        self._index = index  # Динамическое свойство: индекс помидора
+        self._state = self.states[0]  # Динамическое свойство: начальная стадия созревания (отсутствует)
