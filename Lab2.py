@@ -1,11 +1,21 @@
-class Car:  # Определяем класс Car
-    def __init__(self, make, model):  # Определяем метод инициализации (конструктор),он принимает параметры make и model.
-        self.make = make  # Сохраняем марку автомобиля в атрибуте make объекта.
-        self.model = model  # Сохраняем модель автомобиля в атрибуте model объекта.
+class Icecream:
+    def __init__(self, ingredient=None):
+        if isinstance(ingredient, str):
+            self.ingredient = ingredient
+        else:
+            self.ingredient = None
 
-    def drive(self):  # Определяем метод drive, который описывает действие вождения автомобиля.
-        print(f"Driving the {self.make} {self.model}")  # Выводим сообщение о том, что мы за рулем автомобился, с указанием его марки и модели.
+    def composition(self):
+        if self.ingredient:
+            print(f"Мороженое с {self.ingredient}")
+        else:
+            print('Обычное мороженое')
 
-my_car = Car("Toyota", "Corolla")  # Создаем экземпляр класса Car с маркой "Toyota" и моделью "Corolla".
-my_car.drive()  # Вызываем метод drive у экземпляра my_car, чтобы вывести сообщение о вождении.
+
+icecream = Icecream()
+icecream.composition()
+icecream = Icecream('шоколадом')
+icecream.composition()
+icecream = Icecream(5)
+icecream.composition()
 

@@ -1,11 +1,18 @@
-class Car:  # Определяем класс Car
-    def __init__(self, make, model):  # Определяем метод инициализации (конструктор), он принимает параметры make и model.
-        self._make = make  # Сохраняем марку автомобиля в защищенном атрибуте make объекта.
-        self.__model = model  # Сохраняем модель автомобиля в приватном атрибуте model объекта.
+class Mammal:
+    className = 'Mammal'
 
-    def drive(self):  # Определяем метод drive, который описывает действие вождения автомобиля.
-        print(f"Driving the {self._make} {self.__model}")  # Выводим сообщение о том, что мы за рулем автомобиля, с указанием его марки и модели.
 
-my_car = Car("Toyota", "Corolla")  # Создаем экземпляр класса Car с маркой "Toyota" и моделью "Corolla".
-print(my_car._make) # Доступ к защищенному атрибуту.
-my_car.drive()  # Вызываем метод drive у экземпляра my_car, чтобы вывести сообщение о вождении.
+class Dog(Mammal):
+    species = 'canine'
+    sounds = 'wow'
+
+
+class Cat(Mammal):
+    species = 'feline'
+    sounds = 'meow'
+
+
+dog = Dog()
+print(f"Dog is {dog.className}, but they say {dog.sounds}")
+cat = Cat()
+print(f"Cat is {cat.className}, but they say {cat.sounds}")
