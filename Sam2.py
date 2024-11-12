@@ -1,14 +1,22 @@
-class Tomato:
-    states = ['отсутствует', 'цветение', 'зеленый', 'красный']
+def read_file(filename):
+    try:
+        with open(filename, 'r', encoding='utf-8') as file:
+            data = file.read()
+            if not data:
+                raise Exception("В этом файле ничего нет")
+            else:
+                print(data)
+    except FileNotFoundError:
+        print("Файл не найден")
+    except Exception as e:
+        print(e)
 
-    def __init__(self, index):
-        self._index = index  # Динамическое свойство: индекс помидора
-        self._state = self.states[0]  # Динамическое свойство: начальная стадия созревания (отсутствует)
+if __name__ == '__main__':
+    empty_file = "empty_file.txt"
+    non_empty_file = "non_empty_file.txt"
 
-    def grow(self):
-        current_index = self.states.index(self._state)
-        if current_index < len(self.states) - 1:
-            self._state = self.states[current_index + 1]
+    print("Считывание пустого файла:")
+    read_file(empty_file)
 
-    def is_ripe(self):
-        return self._state == 'красный'
+    print("\nСчитывание не пустого файла:")
+    read_file(non_empty_file)
