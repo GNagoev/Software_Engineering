@@ -1,13 +1,17 @@
-class TomatoBush:
-    def __init__(self, number_of_tomatoes):
-        self.tomatoes = [Tomato(i) for i in range(number_of_tomatoes)]
+def add_two_numbers():
+    try:
+        num = input("Введите число: ")
+        result = 2 + int(num)
+        print(f"2 + ваше число = {result}")
+    except ValueError:
+        print("Неподходящий тип данных.Ожидалось целое число!")
 
-    def grow_all(self):
-        for tomato in self.tomatoes:
-            tomato.grow()
 
-    def all_are_ripe(self):
-        return all(tomato.is_ripe() for tomato in self.tomatoes)
-
-    def give_away_all(self):
-        self.tomatoes.clear()
+if __name__ == '__main__':
+    add_two_numbers()
+    add_two_numbers()
+    add_two_numbers()
+    add_two_numbers()
+    add_two_numbers()
+    add_two_numbers()
+    add_two_numbers()
