@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/829758be-520e-4f79-8989-8a19f9494396)
+![image](https://github.com/user-attachments/assets/d1085f9b-2cd4-4dbf-aa99-cf162f87d8d8)
 
 
 
@@ -68,7 +68,8 @@ if __name__ == '__main__':
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/359e3356-da6b-456c-a642-c4bcbae98b56)
+![image](https://github.com/user-attachments/assets/b79f3df5-c292-4485-91a0-6451e2171add)
+
 
 
 
@@ -102,7 +103,8 @@ if __name__ == '__main__':
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/2a8f2e97-d78d-4d59-9181-fe669a1cdb4a)
+![image](https://github.com/user-attachments/assets/9a125dd5-7f52-4144-9db1-3bea5a9a1d7b)
+
 
 
 
@@ -129,7 +131,8 @@ if __name__ == '__main__':
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/ff985bac-198d-497c-b3db-5994d72e7e25)
+![image](https://github.com/user-attachments/assets/f8f15a7d-01e3-4a7b-99d2-e2b277114f09)
+
 
 
 
@@ -162,7 +165,8 @@ if __name__ == '__main__':
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/a84665cf-3c74-4ef7-9c2b-624a537966a4)
+![image](https://github.com/user-attachments/assets/2a7dd449-ebbb-4693-83e7-c1bc2e990ce6)
+
 
 
 
@@ -197,9 +201,8 @@ if __name__ == '__main__':
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/4f4fd71d-ba7d-4d7d-be78-397b571e71fa)
+![image](https://github.com/user-attachments/assets/c9bae28c-cb82-4324-9b85-51c1a0a3658c)
 
-![image](https://github.com/user-attachments/assets/ec299c3a-8169-40b2-a196-3f62677371b6)
 
 
 
@@ -235,10 +238,9 @@ if __name__ == '__main__':
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/f32e60dc-e180-4700-ba75-97edfe6dc710)
+![image](https://github.com/user-attachments/assets/4f0183c6-8b14-4a50-9dfe-b205165869da)
 
-![image](https://github.com/user-attachments/assets/77a36dea-894b-4faf-9d6c-e0678c547516)
-
+![image](https://github.com/user-attachments/assets/58a1237c-dc78-4a19-a67d-f3279a41df80)
 
 
 
@@ -269,9 +271,8 @@ if __name__ == '__main__':
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/f32e60dc-e180-4700-ba75-97edfe6dc710)
+![image](https://github.com/user-attachments/assets/acbaafcb-8680-4e5f-951b-22e66688493f)
 
-![image](https://github.com/user-attachments/assets/77a36dea-894b-4faf-9d6c-e0678c547516)
 
 
 ## Самостоятельная работа №4
@@ -322,9 +323,8 @@ if __name__ == "__main__":
 
 ### Результат.
 
-![image](https://github.com/user-attachments/assets/70310ae7-4e41-4c8c-a6e0-c9c8d2f3e66e)
+![image](https://github.com/user-attachments/assets/cbaa2584-a962-42fa-861c-f82744efa249)
 
-![image](https://github.com/user-attachments/assets/064db146-13c4-4733-af45-d5966c782cc1)
 
 
 
@@ -382,7 +382,6 @@ if __name__ == "__main__":
 ### Результат.
 
 
-![image](https://github.com/user-attachments/assets/d8599b3a-d124-47d2-94d9-95cf3be82a17)
+![image](https://github.com/user-attachments/assets/98cb4f15-e38b-4880-8652-b580f3acfc8e)
 
-![image](https://github.com/user-attachments/assets/f1690a00-1d60-44a3-a43b-7994cebad40e)
 
