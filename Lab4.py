@@ -1,12 +1,9 @@
-class NegativeValueException(Exception):
-    pass
+b = (i**2 for i in range(1,5))
+print(b)
+print('first')
+for i in b:
+    print(i)
+print('second')
 
-def check_name(name):
-    if len(name)>10:
-        raise NegativeValueException('Длина более 10 символов')
-    else:
-        print('Успешная регистрация')
-
-if __name__ == '__main__':
-    name = 'Глеб'
-    check_name(name)
+for i in b:
+    print(i)

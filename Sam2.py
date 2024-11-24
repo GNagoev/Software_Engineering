@@ -1,22 +1,10 @@
-def read_file(filename):
-    try:
-        with open(filename, 'r', encoding='utf-8') as file:
-            data = file.read()
-            if not data:
-                raise Exception("В этом файле ничего нет")
-            else:
-                print(data)
-    except FileNotFoundError:
-        print("Файл не найден")
-    except Exception as e:
-        print(e)
+def fib(n):
+    a, b = 1, 1
+    with open("fib.txt", "w") as f:
+        for _ in range(n):
+            f.write(str(a) + "\n")
+            yield a
+            a, b = b, a + b
 
-if __name__ == '__main__':
-    empty_file = "empty_file.txt"
-    non_empty_file = "non_empty_file.txt"
-
-    print("Считывание пустого файла:")
-    read_file(empty_file)
-
-    print("\nСчитывание не пустого файла:")
-    read_file(non_empty_file)
+fibonacci_numbers = list(fib(200))
+print(fibonacci_numbers[-1])
